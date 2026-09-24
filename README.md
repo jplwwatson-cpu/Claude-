@@ -39,6 +39,9 @@ Each has real per-aircraft mass, wing area, thrust, and drag figures driving
 a genuine lift/drag/thrust flight model (`src/physics/flightModel.ts`) — not
 scripted movement.
 
+(Note: "MiG-52" isn't a real aircraft, so the MiG-29 Fulcrum was substituted
+as the closest well-known Mikoyan jet.)
+
 ## Cities
 
 Montreal, New York, Paris, Dubai, and Tokyo, all placed within one
@@ -75,13 +78,14 @@ native Gamepad API.
 - **Aircraft models are procedurally built**, not imported from licensed
   real-world 3D scans — both to keep the app dependency-free and to avoid
   using someone else's copyrighted aircraft assets without permission.
-- **Five aircraft currently use a placeholder silhouette**: F-35, F-14,
-  B-2, SR-71, and Boeing 747 fly with their real, distinct physics profiles
-  today, but visually still use the generic-fighter body shape pending
-  bespoke geometry (a true flying wing for the B-2, a widebody with
-  underwing engines for the 747, visible variable-sweep wing pivots for the
-  F-14, and a visible STOVL lift nozzle for the F-35). The other six
-  (F-18, Rafale, MiG-29, F-22, A-10, F-16) have distinct tuned silhouettes.
+- All 11 aircraft now have distinct, purpose-built geometry: the B-2 is a
+  true flying wing (no fuselage/tail meshes), the SR-71 has its chined
+  blended body and twin canted fins, the 747 is a widebody with an
+  upper-deck hump and four underwing pylon-mounted engines, the F-35's
+  engine nozzle physically rotates for VTOL, and the F-14's wings physically
+  sweep on a hinge. None of this is hand-sculpted or imported — it's all
+  parametric Three.js geometry, so panel proportions are a reasonable
+  likeness rather than a laser-scanned replica.
 - Motion blur is a cheap radial "speed blur" shader, not a true per-pixel
   velocity buffer — chosen to keep frame rate high.
 

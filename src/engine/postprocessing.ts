@@ -6,6 +6,35 @@ import { SSAOPass } from "three/examples/jsm/postprocessing/SSAOPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
 
+// The Sky object (three/examples/jsm/objects/Sky.js) is a raw custom
+// ShaderMaterial that writes its physically-based radiance straight to
+// gl_FragColor, bypassing renderer.toneMapping/toneMappingExposure entirely
+// (that chunk is only auto-injected into Three's built-in material shaders).
+// Its horizon/sun glow can be many times brighter than 1.0 in linear HDR, so
+// without an explicit tonemap it blows out bloom and clips to solid white.
+// This pass compresses the whole buffer (sky included) before anything
+// downstream reads it as "brightness".
+const PreTonemapShader = {
+  uniforms: { tDiffuse: { value: null as THREE.Texture | null }, exposure: { value: 1.0 } },
+  vertexShader: /* glsl */ `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: /* glsl */ `
+    uniform sampler2D tDiffuse;
+    uniform float exposure;
+    varying vec2 vUv;
+    void main() {
+      vec3 color = texture2D(tDiffuse, vUv).rgb * exposure;
+      color = color / (color + vec3(1.0));
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `,
+};
+
 // Cinematic grade: filmic vignette, subtle warm color grade, and a speed-reactive
 // radial ("zoom") blur that stands in for full per-pixel motion blur — cheap
 // enough to hold 60fps while still selling high-speed motion.
@@ -79,6 +108,10 @@ export function createPostFX(
 ): PostFX {
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
+
+  const preTonemapPass = new ShaderPass(PreTonemapShader);
+  preTonemapPass.uniforms["exposure"].value = 1.6;
+  composer.addPass(preTonemapPass);
 
   const ssao = new SSAOPass(scene, camera, window.innerWidth, window.innerHeight);
   ssao.kernelRadius = 6;

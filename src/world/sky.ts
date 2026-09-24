@@ -17,12 +17,12 @@ export function createSkySystem(scene: THREE.Scene): SkySystem {
   scene.add(sky);
 
   const uniforms = sky.material.uniforms;
-  uniforms["turbidity"].value = 0.6;
-  uniforms["rayleigh"].value = 0.55;
-  uniforms["mieCoefficient"].value = 0.0012;
-  uniforms["mieDirectionalG"].value = 0.6;
+  uniforms["turbidity"].value = 2.2;
+  uniforms["rayleigh"].value = 1.3;
+  uniforms["mieCoefficient"].value = 0.0032;
+  uniforms["mieDirectionalG"].value = 0.78;
 
-  const sunLight = new THREE.DirectionalLight(0xfff3e0, 2.0);
+  const sunLight = new THREE.DirectionalLight(0xfff3e0, 2.6);
   sunLight.castShadow = true;
   sunLight.shadow.mapSize.set(4096, 4096);
   sunLight.shadow.camera.near = 10;
@@ -50,7 +50,7 @@ export function createSkySystem(scene: THREE.Scene): SkySystem {
     sunDirection.copy(sunPos).normalize();
 
     sunLight.position.copy(sunDirection).multiplyScalar(3000);
-    sunLight.intensity = THREE.MathUtils.clamp(1.3 * Math.sin(elevation) + 0.25, 0.2, 1.6);
+    sunLight.intensity = THREE.MathUtils.clamp(2.6 * Math.sin(elevation) + 0.4, 0.3, 3.2);
     const warmth = THREE.MathUtils.clamp(1 - Math.sin(elevation), 0, 1);
     sunLight.color.setRGB(1, 1 - warmth * 0.25, 1 - warmth * 0.5);
   }

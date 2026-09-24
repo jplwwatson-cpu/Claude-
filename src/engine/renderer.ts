@@ -12,8 +12,12 @@ export function createRenderer(canvas: HTMLCanvasElement): THREE.WebGLRenderer {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.55;
+  // Tone mapping is done manually in the post-processing chain (see
+  // engine/postprocessing.ts) instead of here: the Sky object's raw custom
+  // shader bypasses renderer.toneMapping, so applying it only to standard
+  // materials here would tonemap everything except the sky, then bloom would
+  // still blow the un-tonemapped sky out to white.
+  renderer.toneMapping = THREE.NoToneMapping;
   return renderer;
 }
 

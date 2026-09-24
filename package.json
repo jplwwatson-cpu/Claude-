@@ -1,0 +1,21 @@
+{
+  "name": "flight-sim",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Self-contained browser flight simulator. No backend, no runtime network calls.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.160.1",
+    "simplex-noise": "^4.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "@types/three": "^0.160.0"
+  }
+}

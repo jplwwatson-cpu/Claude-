@@ -82,6 +82,8 @@ new MainMenu(({ aircraftId, cityId }) => {
   aircraftRoot.add(instance.group);
   currentConfig = config;
   currentCockpitOffset = instance.cockpitOffset;
+  const wingspan = Math.sqrt(config.aspectRatio * config.wingArea);
+  cameraRig.setAircraftScale(THREE.MathUtils.clamp(wingspan / 11.4, 0.7, 4.5));
 
   rigidBody = new RigidBodyState();
   rigidBody.position.copy(city.spawnPosition);

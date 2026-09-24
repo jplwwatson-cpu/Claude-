@@ -21,6 +21,7 @@ export class CameraRig {
   private initialized = false;
   private flybyAnchor: THREE.Vector3 | null = null;
   private timeAccum = 0;
+  private aircraftScale = 1;
 
   constructor() {
     this.setupOrbitControls();
@@ -29,6 +30,17 @@ export class CameraRig {
   cycle(): void {
     const idx = CAMERA_MODES.indexOf(this.mode);
     this.mode = CAMERA_MODES[(idx + 1) % CAMERA_MODES.length];
+    this.flybyAnchor = null;
+  }
+
+  /**
+   * Scales chase/orbit/flyby distances to the aircraft's size (1 = fighter-scale).
+   * Without this, a 70m airliner or a 52m flying wing puts the default
+   * fighter-tuned camera almost inside the model.
+   */
+  setAircraftScale(scale: number): void {
+    this.aircraftScale = scale;
+    this.orbitDistance = 22 * scale;
     this.flybyAnchor = null;
   }
 
@@ -81,8 +93,8 @@ export class CameraRig {
     );
 
     if (this.mode === "chase") {
-      const back = THREE.MathUtils.lerp(13, 20, speedT);
-      _offset.set(0, 4.2, back).applyQuaternion(aircraft.quaternion);
+      const back = THREE.MathUtils.lerp(13, 20, speedT) * this.aircraftScale;
+      _offset.set(0, 4.2 * this.aircraftScale, back).applyQuaternion(aircraft.quaternion);
       _desiredPos.copy(aircraft.position).add(_offset).add(_shake);
       if (!this.initialized) {
         this.smoothedPos.copy(_desiredPos);
@@ -112,16 +124,16 @@ export class CameraRig {
       camera.lookAt(aircraft.position);
     } else if (this.mode === "flyby") {
       if (!this.flybyAnchor) {
-        const lateral = new THREE.Vector3(1, 0, 0).applyQuaternion(aircraft.quaternion).multiplyScalar(35);
+        const lateral = new THREE.Vector3(1, 0, 0).applyQuaternion(aircraft.quaternion).multiplyScalar(35 * this.aircraftScale);
         _flybyFixed.copy(aircraft.position).add(lateral);
-        _flybyFixed.y = Math.max(aircraft.position.y - 6, 2);
+        _flybyFixed.y = Math.max(aircraft.position.y - 6 * this.aircraftScale, 2);
         this.flybyAnchor = _flybyFixed.clone();
       }
       camera.up.set(0, 1, 0);
       camera.position.copy(this.flybyAnchor);
       _flybyLook.copy(aircraft.position);
       camera.lookAt(_flybyLook);
-      if (aircraft.position.distanceTo(this.flybyAnchor) > 260) this.flybyAnchor = null;
+      if (aircraft.position.distanceTo(this.flybyAnchor) > 260 * this.aircraftScale) this.flybyAnchor = null;
     }
 
     camera.fov = this.smoothedFov;

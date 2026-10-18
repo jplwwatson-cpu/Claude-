@@ -15,7 +15,7 @@
     // Apply the saved style before first paint so the page never flashes the wrong one.
     try {
       var m = new URLSearchParams(location.search).get("mode") || localStorage.getItem("mode");
-      if (/^(fluid|minimal|premium|interactive|editorial|bold)$/.test(m || "")) document.documentElement.dataset.mode = m;
+      if (/^(fluid|minimal|premium|interactive|editorial|playa)$/.test(m || "")) document.documentElement.dataset.mode = m;
     } catch (e) {}
   </script>
 </head>
@@ -41,7 +41,7 @@
         <button type="button" role="radio" data-set-mode="premium" aria-checked="false"><span class="sw sw-premium" aria-hidden="true"></span><span>Premium</span></button>
         <button type="button" role="radio" data-set-mode="interactive" aria-checked="false"><span class="sw sw-interactive" aria-hidden="true"></span><span data-i18n="modeInteractive">Interactivo</span></button>
         <button type="button" role="radio" data-set-mode="editorial" aria-checked="false"><span class="sw sw-editorial" aria-hidden="true"></span><span data-i18n="mEditorial">Editorial</span></button>
-        <button type="button" role="radio" data-set-mode="bold" aria-checked="false"><span class="sw sw-bold" aria-hidden="true"></span><span>Bold</span></button>
+        <button type="button" role="radio" data-set-mode="playa" aria-checked="false"><span class="sw sw-playa" aria-hidden="true"></span><span data-i18n="mPlaya">Playa</span></button>
       </div>
     </div>
 
@@ -69,8 +69,8 @@
         <figure class="hero-media">
           <!-- One clip per style; app.js plays only the one that is showing. Footage: Pexels. -->
           <video class="hero-video" data-video-modes="minimal editorial" muted loop playsinline preload="none" poster="img/centro-poster.webp" aria-hidden="true"><source src="video/centro.mp4" type="video/mp4"><source src="video/centro.webm" type="video/webm"></video>
-          <video class="hero-video" data-video-modes="premium bold" muted loop playsinline preload="none" poster="img/malecon-poster.webp" aria-hidden="true"><source src="video/malecon.mp4" type="video/mp4"><source src="video/malecon.webm" type="video/webm"></video>
-          <video class="hero-video" data-video-modes="interactive fluid" muted loop playsinline preload="none" poster="img/playa-poster.webp" aria-hidden="true"><source src="video/playa.mp4" type="video/mp4"><source src="video/playa.webm" type="video/webm"></video>
+          <video class="hero-video" data-video-modes="premium" muted loop playsinline preload="none" poster="img/malecon-poster.webp" aria-hidden="true"><source src="video/malecon.mp4" type="video/mp4"><source src="video/malecon.webm" type="video/webm"></video>
+          <video class="hero-video" data-video-modes="interactive fluid playa" muted loop playsinline preload="none" poster="img/playa-poster.webp" aria-hidden="true"><source src="video/playa.mp4" type="video/mp4"><source src="video/playa.webm" type="video/webm"></video>
         </figure>
         <div class="hero-copy">
           <p class="eyebrow reveal" data-i18n="heroEyebrow">Estudio web en Puerto Vallarta</p>

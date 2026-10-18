@@ -1,4 +1,4 @@
-// PV Websites: page tabs, three visual modes, three languages, interactive extras and the contact form.
+// Bahía Studio: page tabs, three visual modes, three languages, interactive extras and the contact form.
 (() => {
   const root = document.documentElement;
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
@@ -214,7 +214,7 @@
   function updateTitle() {
     const tab = tabs.find((a) => a.dataset.tab === current);
     const label = tab ? tab.textContent.trim() : ($(`#${current} h1`)?.textContent.trim() || "");
-    document.title = current === "inicio" || !label ? `PV Websites | ${t("heroEyebrow")}` : `${label} | PV Websites`;
+    document.title = current === "inicio" || !label ? `Bahía Studio | ${t("heroEyebrow")}` : `${label} | Bahía Studio`;
   }
   function showPage(id, { focus = true } = {}) {
     if (!pages.some((p) => p.dataset.page === id)) id = "inicio";

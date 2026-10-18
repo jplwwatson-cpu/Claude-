@@ -1,4 +1,4 @@
-# PV Websites
+# Bahía Studio
 
 Static, multi-page site for a web design studio in Puerto Vallarta. No build step: upload this folder to any static host (Netlify Drop, Vercel, GitHub Pages, cPanel).
 
@@ -24,4 +24,4 @@ After activation, FormSubmit gives you a random alias. Use it in `action` instea
 
 ## Fonts and icons
 
-Google Fonts (Geist, Plus Jakarta Sans, Cormorant Garamond, Bricolage Grotesque). Phosphor Icons (MIT), self-hosted in `fonts/`.
+Geist, Geist Mono, Plus Jakarta Sans, Cormorant Garamond and Bricolage Grotesque (SIL OFL, from Fontsource) and Phosphor Icons (MIT), all self-hosted in `fonts/`, so no visitor data goes to a font CDN.

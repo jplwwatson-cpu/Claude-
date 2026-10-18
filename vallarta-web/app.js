@@ -20,8 +20,7 @@
     heroTitleA: "Websites that help", heroTitleB: "your business grow.",
     heroLead: "Design, development and local SEO for restaurants, hotels, tours and businesses around Banderas Bay.",
     ctaQuote: "Get a quote", ctaWork: "See our work",
-    threeLabel: "3D model of El Caballito on the boardwalk. Drag to rotate it.",
-    threeHint: "Drag to rotate. Tap to make it jump.", threeCaption: "El Caballito of the Malecón, stylized",
+    threeLabel: "3D model of El Caballito on the boardwalk, turning.", threeCaption: "El Caballito of the Malecón",
     areasLabel: "Areas we work in",
     whyTitle: "A website as good as what you offer.",
     why1Title: "Our own design", why1Body: "No templates. Your site looks like your business, not like the one next door.",
@@ -94,8 +93,7 @@
     heroTitleA: "Des sites web qui font", heroTitleB: "grandir votre entreprise.",
     heroLead: "Design, développement et référencement local pour restaurants, hôtels, excursions et commerces de la baie de Banderas.",
     ctaQuote: "Demander un devis", ctaWork: "Voir nos projets",
-    threeLabel: "Modèle 3D d’El Caballito du malecón. Faites glisser pour le tourner.",
-    threeHint: "Faites glisser pour tourner. Touchez pour le faire sauter.", threeCaption: "El Caballito du malecón, version stylisée",
+    threeLabel: "Modèle 3D d’El Caballito du malecón, qui tourne.", threeCaption: "El Caballito du malecón",
     areasLabel: "Zones où nous travaillons",
     whyTitle: "Un site à la hauteur de ce que vous offrez.",
     why1Title: "Un design unique", why1Body: "Aucun modèle tout fait. Votre site ressemble à votre entreprise, pas à celle d’à côté.",
@@ -363,7 +361,6 @@
       .catch(() => {
         // No WebGL or blocked script: show the bay photo instead of an empty box.
         sceneBox.style.background = `center / cover url("${$(".hero-media img").src}")`;
-        $(".scene-hint").hidden = true;
       });
   }
 

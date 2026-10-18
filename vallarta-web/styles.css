@@ -262,11 +262,10 @@ main:focus { outline: none; }
 [data-mode="interactive"] .hero-title em { font-style: normal; color: var(--accent); }
 [data-mode="interactive"] .hero-3d {
   display: block; position: relative; height: min(78dvh, 680px); border-radius: 36px; overflow: hidden;
-  background: radial-gradient(120% 90% at 50% 10%, #ffe2c7 0%, #ffb88c 28%, #7aa8ff 62%, #2448ff 100%);
+  background: radial-gradient(120% 90% at 50% 15%, #fff4e6 0%, #ffd2ad 30%, #a9c8ff 62%, #4a6dff 100%);
   box-shadow: var(--shadow);
 }
-.scene { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
-.scene:active { cursor: grabbing; }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .scene-hint, .scene-caption { position: absolute; left: 20px; right: 20px; margin: 0; font-size: 0.875rem; color: #0c1021; pointer-events: none; }
 .scene-hint { bottom: 18px; display: inline-flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 40px); padding: 8px 14px; border-radius: 999px; background: rgb(255 255 255 / 0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .scene-caption { top: 18px; font-weight: 600; color: rgb(12 16 33 / 0.7); }

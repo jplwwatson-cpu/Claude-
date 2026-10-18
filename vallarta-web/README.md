@@ -1,25 +1,28 @@
-# Malecón Studio website
+# PV Websites
 
-Static site for a web design studio in Puerto Vallarta. No build step: open `index.html` or upload the folder to any static host (Netlify, Vercel, GitHub Pages, cPanel).
+Static, multi-page site for a web design studio in Puerto Vallarta. No build step: upload this folder to any static host (Netlify Drop, Vercel, GitHub Pages, cPanel).
 
-## Three styles, same content
+## Structure
 
-The switch at the top center changes `<html data-mode>` between `minimal`, `premium` and `interactive`. All styling lives in `styles.css` under those selectors. The chosen mode is saved in the browser and in the URL (`?mode=interactive`), so you can share a link to a specific style.
-
-The language button toggles Spanish and English. Spanish text lives in `index.html`; English text lives in the `en` object in `app.js`.
+- Five tabs: Inicio, Servicios, Trabajo, Nosotros, Contacto. Each tab is a `<section data-page>` in `index.html`, switched by the URL hash (`#servicios`). On tablets and phones the tabs become a bottom tab bar.
+- Three styles from the switch at the top center: Minimalistic, Premium, Interactive. Each one has its own layouts in `styles.css` under `[data-mode="minimal"]`, `[data-mode="premium"]` and `[data-mode="interactive"]`. The choice is saved and also works as a link: `?mode=interactive`.
+- Interactive mode shows a 3D model of El Caballito (the seahorse statue on the Malecón), built in `scene3d.js` with three.js. three.js is self-hosted in `vendor/` (MIT license).
+- Three languages: Spanish text lives in `index.html`; English and French live in the `en` and `fr` objects in `app.js`.
 
 ## Contact form
 
-The form posts to [FormSubmit](https://formsubmit.co), which forwards each message to the email in the form's `action` attribute.
+The form posts to [FormSubmit](https://formsubmit.co), which forwards each message to the email in the form's `action`.
 
-1. Publish the site and send one test message.
-2. FormSubmit emails an activation link to that inbox. Click it once. Messages arrive after that.
+1. Publish the site. The form does not send from a file opened on your computer (`file://`).
+2. Send one test message. FormSubmit emails an activation link to the inbox. Click it once.
 3. To change the inbox, edit the `action` URL on the `<form>` and the `mailto:` link above it in `index.html`. Repeat the activation for the new address.
 
-After activation, FormSubmit also gives you a random alias. Put that alias in place of the email in `action` to keep the address out of the page source.
+After activation, FormSubmit gives you a random alias. Use it in `action` instead of the email to keep the address out of the page source.
 
-## Before going live
+## Photos
 
-- Replace the `picsum.photos` placeholder images with real photos of Puerto Vallarta and your work. Search `picsum` in `index.html` and `styles.css` to find all 8 spots.
-- "Malecón Studio" is a placeholder name. Search and replace it.
-- Icons: Phosphor Icons (MIT), self-hosted in `fonts/`.
+Free photos from Unsplash (Puerto Vallarta photos by José Carrillo, Nicole Herrero, Taylor Beach and Alonso Reyes, plus general stock). For the best speed and reliability, download the ones you keep, put them in an `img/` folder and point the `src` attributes at them. Replace them with your own photos and your team when you can.
+
+## Fonts and icons
+
+Google Fonts (Geist, Plus Jakarta Sans, Cormorant Garamond, Bricolage Grotesque). Phosphor Icons (MIT), self-hosted in `fonts/`.

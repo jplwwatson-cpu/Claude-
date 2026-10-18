@@ -6,8 +6,8 @@ Static, multi-page site for a web design studio in Puerto Vallarta. No build ste
 
 - Five tabs: Inicio, Servicios, Trabajo, Nosotros, Contacto. Each tab is a `<section data-page>` in `index.html`, switched by the URL hash (`#servicios`). On tablets and phones the tabs become a bottom tab bar.
 - Three styles from the switch at the top center: Minimalistic, Premium, Interactive. Each one has its own layouts in `styles.css` under `[data-mode="minimal"]`, `[data-mode="premium"]` and `[data-mode="interactive"]`. The choice is saved and also works as a link: `?mode=interactive`.
-- Interactive mode shows El Caballito (the seahorse statue on the Malecón) in 3D: `scene3d.js` inflates a cut-out photo (`img/caballito.webp`, with its depth map `img/caballito-depth.png`) into a two-sided volume, stands it on a tall dark stone pedestal like the one on the Malecón, flies it in on a diagonal when the Interactive style opens, and turns it a full circle. A real scan saved as `models/caballito.glb` replaces it and turns a full 360 degrees. three.js is self-hosted in `vendor/` (MIT license).
-- The Caballito photo was supplied by the site owner. Confirm you have the rights to use it, or replace it with your own photo taken against a clear sky.
+- Photos in `img/` are of Puerto Vallarta (the Malecón and Los Muertos beach), supplied by the site owner. Confirm you have the rights to use them, or replace them with your own.
+- Work concepts are shown as typographic brand covers made in CSS (`.cover` in `styles.css`), so the site needs no stock photos.
 - Three languages: Spanish text lives in `index.html`; English and French live in the `en` and `fr` objects in `app.js`.
 
 ## Contact form
@@ -20,9 +20,6 @@ The form posts to [FormSubmit](https://formsubmit.co), which forwards each messa
 
 After activation, FormSubmit gives you a random alias. Use it in `action` instead of the email to keep the address out of the page source.
 
-## Photos
-
-Free photos from Unsplash (Puerto Vallarta photos by José Carrillo, Nicole Herrero, Taylor Beach and Alonso Reyes, plus general stock). For the best speed and reliability, download the ones you keep, put them in an `img/` folder and point the `src` attributes at them. Replace them with your own photos and your team when you can.
 
 ## Fonts and icons
 

@@ -16,11 +16,10 @@
   const en = {
     skip: "Skip to content", modeLabel: "Site style", modeInteractive: "Interactive", navLabel: "Main", langLabel: "Language",
     navHome: "Home", navServices: "Services", navWork: "Work", navAbout: "About", navContact: "Contact",
-    heroAlt: "Sunset on the Puerto Vallarta boardwalk", heroEyebrow: "Web studio in Puerto Vallarta",
+    heroAlt: "The Puerto Vallarta boardwalk and its palm trees", heroEyebrow: "Web studio in Puerto Vallarta",
     heroTitleA: "Websites that help", heroTitleB: "your business grow.",
     heroLead: "Design, development and local SEO for restaurants, hotels, tours and businesses around Banderas Bay.",
     ctaQuote: "Get a quote", ctaWork: "See our work",
-    threeLabel: "3D model of El Caballito on the boardwalk, turning.",
     areasLabel: "Areas we work in",
     whyTitle: "A website as good as what you offer.",
     why1Title: "Our own design", why1Body: "No templates. Your site looks like your business, not like the one next door.",
@@ -61,8 +60,9 @@
     w6Title: "Surf school", w6Body: "Lessons by level, board rentals and a surf report.", w6a: "Lessons by level", w6b: "Board rentals", w6c: "Daily surf report",
     w7Title: "Real estate", w7Body: "Listings with filters, a map and multilingual property pages.", w7a: "Search with filters", w7b: "Property map", w7c: "Property pages in three languages",
     w8Title: "Condos in the Marina", w8Body: "Pre-sale with floor plans, construction updates and an interest form.", w8a: "Floor plans and pre-sale prices", w8b: "Construction updates with photos", w8c: "Interest form",
+    c1: "Seafood", c2: "Beach club", c3: "Hotel", c4: "Villa", c5: "On board", c6: "Surf", c7: "Homes", c8: "Marina",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
-    aboutAlt: "Street in downtown Puerto Vallarta", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
+    aboutAlt: "Los Muertos beach and pier in Puerto Vallarta", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
     aboutBody1: "For two years we have been in Puerto Vallarta, helping local businesses look great online and win more customers.",
     aboutBody2: "We work face to face, in Spanish, English and French. Once your site is live, we are still here for whatever you need.",
     fact1: "years in Puerto Vallarta", fact2: "languages: Spanish, English and French", fact3: "direct contact, no middlemen",
@@ -89,11 +89,10 @@
   const fr = {
     skip: "Aller au contenu", modeLabel: "Style du site", modeInteractive: "Interactif", navLabel: "Principal", langLabel: "Langue",
     navHome: "Accueil", navServices: "Services", navWork: "Projets", navAbout: "À propos", navContact: "Contact",
-    heroAlt: "Coucher de soleil sur le malecón de Puerto Vallarta", heroEyebrow: "Studio web à Puerto Vallarta",
+    heroAlt: "Le malecón de Puerto Vallarta et ses palmiers", heroEyebrow: "Studio web à Puerto Vallarta",
     heroTitleA: "Des sites web qui font", heroTitleB: "grandir votre entreprise.",
     heroLead: "Design, développement et référencement local pour restaurants, hôtels, excursions et commerces de la baie de Banderas.",
     ctaQuote: "Demander un devis", ctaWork: "Voir nos projets",
-    threeLabel: "Modèle 3D d’El Caballito du malecón, qui tourne.",
     areasLabel: "Zones où nous travaillons",
     whyTitle: "Un site à la hauteur de ce que vous offrez.",
     why1Title: "Un design unique", why1Body: "Aucun modèle tout fait. Votre site ressemble à votre entreprise, pas à celle d’à côté.",
@@ -134,8 +133,9 @@
     w6Title: "École de surf", w6Body: "Cours par niveau, location de planches et bulletin des vagues.", w6a: "Cours par niveau", w6b: "Location de planches", w6c: "Bulletin des vagues du jour",
     w7Title: "Immobilier", w7Body: "Annonces avec filtres, carte et fiches en plusieurs langues.", w7a: "Recherche avec filtres", w7b: "Carte des propriétés", w7c: "Fiches en trois langues",
     w8Title: "Condos à la Marina", w8Body: "Prévente avec plans, avancement des travaux et formulaire d’intérêt.", w8a: "Plans et prix de prévente", w8b: "Avancement des travaux en photos", w8c: "Formulaire d’intérêt",
+    c1: "Fruits de mer", c2: "Beach club", c3: "Hôtel", c4: "Villa", c5: "À bord", c6: "Surf", c7: "Maisons", c8: "Marina",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
-    aboutAlt: "Rue du centre de Puerto Vallarta", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
+    aboutAlt: "La plage de Los Muertos et sa jetée à Puerto Vallarta", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
     aboutBody1: "Depuis deux ans, nous aidons à Puerto Vallarta les entreprises locales à soigner leur image en ligne et à gagner des clients.",
     aboutBody2: "Nous travaillons en personne, en espagnol, en anglais et en français. Une fois votre site en ligne, nous restons là pour vous.",
     fact1: "ans à Puerto Vallarta", fact2: "langues : espagnol, anglais et français", fact3: "contact direct, sans intermédiaire",
@@ -208,7 +208,6 @@
       current = id;
       window.scrollTo(0, 0);
       updateTitle();
-      sceneSync();
       placeFilterThumb();
     };
     if (current && document.startViewTransition && !reduceMotion.matches) document.startViewTransition(swap);
@@ -237,7 +236,7 @@
     try { history.replaceState(null, "", url); } catch {}
     $$(".tilt-on").forEach((el) => { el.style.transform = ""; });
     $$(".magnetic").forEach((el) => { el.style.translate = ""; });
-    sceneSync();
+    heroMedia.style.transform = "";
     placeFilterThumb();
     if (mode === "interactive") scramble();
   }
@@ -312,6 +311,19 @@
     });
   }
 
+  const heroMedia = $(".hero-media");
+  if (finePointer.matches) {
+    $(".hero").addEventListener("pointermove", (e) => {
+      if (!isInteractive()) return;
+      const r = heroMedia.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      heroMedia.style.transform = `perspective(1200px) rotateY(${px * 8}deg) rotateX(${-py * 8}deg)`;
+      heroMedia.style.setProperty("--gx", `${(px + 0.5) * 100}%`);
+      heroMedia.style.setProperty("--gy", `${(py + 0.5) * 100}%`);
+    });
+    $(".hero").addEventListener("pointerleave", () => { heroMedia.style.transform = ""; });
+  }
+
   const track = $(".featured-track");
   let drag = null;
   track.addEventListener("pointerdown", (e) => {
@@ -347,26 +359,6 @@
     });
   }
 
-  /* ================= 3D CABALLITO (interactive mode, home tab only) ================= */
-  const sceneBox = $(".hero-3d");
-  let scene = null, sceneLoading = null, sceneVisible = true;
-  new IntersectionObserver(([e]) => { sceneVisible = e.isIntersecting; sceneSync(); }).observe(sceneBox);
-  let sceneWanted = false;
-  function sceneSync() {
-    const want = root.dataset.mode === "interactive" && current === "inicio" && sceneVisible;
-    const arriving = want && !sceneWanted;
-    sceneWanted = want;
-    if (!want) { scene?.stop(); return; }
-    if (scene) { if (arriving) scene.enter(); scene.start(); return; }
-    if (sceneLoading) return;
-    sceneLoading = import("./scene3d.js")
-      .then((m) => { scene = m.createScene($(".scene"), { reduceMotion: reduceMotion.matches }); sceneSync(); })
-      .catch(() => {
-        // No WebGL or blocked script: show the bay photo instead of an empty box.
-        sceneBox.style.background = `center / cover url("${$(".hero-media img").src}")`;
-      });
-  }
-
   /* ================= WORK: filters + detail dialog ================= */
   const filterButtons = $$("[data-filter]");
   const thumb = $(".filter-thumb");
@@ -393,8 +385,7 @@
   const dialog = $(".work-dialog");
   let picked = "";
   $$(".work-card").forEach((card) => card.addEventListener("click", () => {
-    const img = $(".work-img img", card);
-    $(".dialog-img img", dialog).src = img.currentSrc || img.src;
+    $(".dialog-img", dialog).replaceChildren($(".cover", card).cloneNode(true));
     $(".dialog-cat", dialog).textContent = $(".work-cat", card).textContent;
     $("#dlg-title").textContent = picked = $(".work-title", card).textContent;
     $(".dialog-desc", dialog).textContent = $(".work-desc", card).textContent;

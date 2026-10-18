@@ -20,7 +20,7 @@
     heroTitleA: "Websites that help", heroTitleB: "your business grow.",
     heroLead: "Design, development and local SEO for restaurants, hotels, tours and businesses around Banderas Bay.",
     ctaQuote: "Get a quote", ctaWork: "See our work",
-    threeLabel: "3D model of El Caballito on the boardwalk, turning.", threeCaption: "El Caballito of the Malecón",
+    threeLabel: "3D model of El Caballito on the boardwalk, turning.",
     areasLabel: "Areas we work in",
     whyTitle: "A website as good as what you offer.",
     why1Title: "Our own design", why1Body: "No templates. Your site looks like your business, not like the one next door.",
@@ -93,7 +93,7 @@
     heroTitleA: "Des sites web qui font", heroTitleB: "grandir votre entreprise.",
     heroLead: "Design, développement et référencement local pour restaurants, hôtels, excursions et commerces de la baie de Banderas.",
     ctaQuote: "Demander un devis", ctaWork: "Voir nos projets",
-    threeLabel: "Modèle 3D d’El Caballito du malecón, qui tourne.", threeCaption: "El Caballito du malecón",
+    threeLabel: "Modèle 3D d’El Caballito du malecón, qui tourne.",
     areasLabel: "Zones où nous travaillons",
     whyTitle: "Un site à la hauteur de ce que vous offrez.",
     why1Title: "Un design unique", why1Body: "Aucun modèle tout fait. Votre site ressemble à votre entreprise, pas à celle d’à côté.",
@@ -351,10 +351,13 @@
   const sceneBox = $(".hero-3d");
   let scene = null, sceneLoading = null, sceneVisible = true;
   new IntersectionObserver(([e]) => { sceneVisible = e.isIntersecting; sceneSync(); }).observe(sceneBox);
+  let sceneWanted = false;
   function sceneSync() {
     const want = root.dataset.mode === "interactive" && current === "inicio" && sceneVisible;
+    const arriving = want && !sceneWanted;
+    sceneWanted = want;
     if (!want) { scene?.stop(); return; }
-    if (scene) { scene.start(); return; }
+    if (scene) { if (arriving) scene.enter(); scene.start(); return; }
     if (sceneLoading) return;
     sceneLoading = import("./scene3d.js")
       .then((m) => { scene = m.createScene($(".scene"), { reduceMotion: reduceMotion.matches }); sceneSync(); })

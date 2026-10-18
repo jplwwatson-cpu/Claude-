@@ -2,7 +2,8 @@
 // Built in 3D from the real photo: the cut-out statue is inflated from its silhouette into a
 // closed, two-sided volume (front shell plus a mirrored back shell meeting at the outline), lit
 // so its shading changes as it turns. Every detail (the boy, the ribs, the patina) comes from
-// the photo. It turns a full circle on its own; visitors do not drag it.
+// the photo. It flies in on a diagonal when shown, then turns a full circle on its own;
+// visitors do not drag it. It stands on the Malecón's tall dark stone pedestal.
 import * as THREE from "./vendor/three.module.min.js";
 import { GLTFLoader } from "./vendor/addons/loaders/GLTFLoader.js";
 import { RoomEnvironment } from "./vendor/addons/environments/RoomEnvironment.js";
@@ -11,11 +12,31 @@ import { RoomEnvironment } from "./vendor/addons/environments/RoomEnvironment.js
 const REAL_MODEL_URL = "models/caballito.glb";
 const PHOTO_URL = "img/caballito.webp";
 const DEPTH_URL = "img/caballito-depth.png";
-const BASE_URL = "img/caballito-base.webp";
-const HEIGHT = 4.2;          // world units, statue + pedestal
+const HEIGHT = 4.6;          // world units, statue + pedestal
 const RELIEF = 0.42;         // half-thickness of the thickest part; the real seahorse is flat-sided
 // Where each part sits in the source photo, in pixels: [left, top, right, bottom].
-const SRC = { statue: [152, 94, 418, 546], base: [134, 546, 362, 619] };
+const SRC = { statue: [152, 94, 418, 546], axis: 248 };
+// The Malecón pedestal, in the same pixel units: a tall, slightly tapered dark stone drum.
+const PED = { top: 112, bottom: 136, height: 250 };
+const ENTER = 1.8;           // seconds for the entrance flight
+
+// Rough dark stone: speckled noise painted once on a canvas.
+function stoneTexture() {
+  const c = document.createElement("canvas");
+  c.width = 512; c.height = 256;
+  const g = c.getContext("2d");
+  g.fillStyle = "#3b3d3f";
+  g.fillRect(0, 0, c.width, c.height);
+  for (let i = 0; i < 9000; i++) {
+    const v = 40 + Math.random() * 50;
+    g.fillStyle = `rgba(${v},${v + 2},${v + 4},${0.25 + Math.random() * 0.5})`;
+    g.fillRect(Math.random() * c.width, Math.random() * c.height, 1 + Math.random() * 2.5, 1 + Math.random() * 2.5);
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.wrapS = THREE.RepeatWrapping;
+  return t;
+}
 
 function loadImage(src) {
   return new Promise((resolve, reject) => {
@@ -83,11 +104,13 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
   const shadow = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 3.4), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false }));
   shadow.rotation.x = -Math.PI / 2;
   shadow.position.y = -HEIGHT / 2 + 0.01;
+  const shadowMat = shadow.material;
   scene.add(shadow);
 
   let scanned = false;
+  let enterAt = 0;
   const tex = new THREE.TextureLoader();
-  Promise.all([tex.loadAsync(PHOTO_URL), loadImage(DEPTH_URL), tex.loadAsync(BASE_URL)]).then(([photo, depthImg, baseTex]) => {
+  Promise.all([tex.loadAsync(PHOTO_URL), loadImage(DEPTH_URL)]).then(([photo, depthImg]) => {
     if (scanned) return;
     photo.colorSpace = THREE.SRGBColorSpace;
     photo.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -96,9 +119,9 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
     const g = c.getContext("2d", { willReadFrequently: true });
     g.drawImage(depthImg, 0, 0);
     const depth = g.getImageData(0, 0, c.width, c.height).data;
-    const px = HEIGHT / (SRC.base[3] - SRC.statue[1]);           // world units per source pixel
-    const axis = (SRC.base[0] + SRC.base[2]) / 2;                 // the pedestal's center is the turning axis
     const [sl, st, sr, sb] = SRC.statue;
+    const px = HEIGHT / (sb - st + PED.height);                   // world units per source pixel
+    const axis = SRC.axis;                                        // the pedestal's center is the turning axis
     const width = (sr - sl) * px, height = (sb - st) * px;
     // Photo colors stay true (emissive) while the lights add shape as it turns.
     const mat = new THREE.MeshStandardMaterial({
@@ -111,17 +134,14 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
     body.position.set(((sl + sr) / 2 - axis) * px, HEIGHT / 2 - height / 2, 0);
     pivot.add(body);
 
-    // The round pedestal is a real cylinder: the photo's front half wraps around, mirrored behind.
-    const [bl, bt, br, bb] = SRC.base;
-    const radius = ((br - bl) / 2) * px, bh = (bb - bt) * px;
-    baseTex.colorSpace = THREE.SRGBColorSpace;
-    baseTex.wrapS = THREE.MirroredRepeatWrapping;
-    baseTex.repeat.x = 2;
-    const sideMat = new THREE.MeshStandardMaterial({ map: baseTex, emissive: 0xffffff, emissiveMap: baseTex, emissiveIntensity: 0.5, roughness: 0.9 });
-    const capMat = new THREE.MeshStandardMaterial({ color: 0x8d8270, roughness: 0.9 });
-    const base = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius * 1.02, bh, 96, 1, false, -Math.PI / 2), [sideMat, capMat, capMat]);
+    // The pedestal is a real tapered drum of rough dark stone, as on the Malecón.
+    const bh = PED.height * px;
+    const sideMat = new THREE.MeshStandardMaterial({ map: stoneTexture(), roughness: 0.95, metalness: 0 });
+    const capMat = new THREE.MeshStandardMaterial({ color: 0x3a3c3e, roughness: 0.9 });
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(PED.top * px, PED.bottom * px, bh, 96, 1, false), [sideMat, capMat, capMat]);
     base.position.y = -HEIGHT / 2 + bh / 2;
     pivot.add(base);
+    enterAt = clock.getElapsedTime();     // fly in once the statue is ready to be seen
   }).catch(() => { /* photo missing: the card shows its gradient only */ });
 
   new GLTFLoader().loadAsync(REAL_MODEL_URL).then((gltf) => {
@@ -144,7 +164,7 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     const k = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    const dist = Math.max((HEIGHT * 1.2) / k, (HEIGHT * 0.95) / camera.aspect / k);
+    const dist = Math.max((HEIGHT * 1.12) / k, (HEIGHT * 0.85) / camera.aspect / k);
     camera.position.set(0, 0.6, dist);
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
@@ -152,10 +172,19 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
   const ro = new ResizeObserver(resize);
   ro.observe(canvas);
 
+  // Entrance: it flies in from the lower right on a diagonal, spinning, and lands on its pedestal.
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
   function frame() {
     const t = clock.getElapsedTime();
-    pivot.rotation.y = reduceMotion ? -0.35 : -0.35 + t * 0.4;
-    if (!reduceMotion) pivot.position.y = Math.sin(t * 1.1) * 0.03;
+    if (reduceMotion) {
+      pivot.rotation.set(0, -0.35, 0);
+    } else {
+      const p = Math.min(1, (t - enterAt) / ENTER), e = easeOut(p), r = 1 - e;
+      pivot.position.set(3.4 * r, -3.2 * r + Math.sin(t * 1.1) * 0.03 * e, 0);
+      pivot.scale.setScalar(0.25 + 0.75 * e);
+      pivot.rotation.set(0, -0.35 + t * 0.4 - r * Math.PI * 3, -0.55 * r);
+      shadowMat.opacity = e;
+    }
     renderer.render(scene, camera);
     raf = requestAnimationFrame(frame);
   }
@@ -163,5 +192,6 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
   return {
     start() { if (!raf) { resize(); raf = requestAnimationFrame(frame); } },
     stop() { cancelAnimationFrame(raf); raf = 0; },
+    enter() { enterAt = clock.getElapsedTime(); },
   };
 }

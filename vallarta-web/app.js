@@ -67,6 +67,7 @@
     privacyLink: "Read the privacy notice", privacyName: "privacy notice", consent: "I have read and accept the",
     eConsent: "To send, accept the privacy notice.",
     legalUpdated: "Last updated: October 18, 2026.", legalLang: "This notice is published in Spanish, which is the legally binding version.",
+    styleWord: "Style", mFluid: "Fluid", mEditorial: "Editorial",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
     aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
     aboutBody1: "For two years we have been in Puerto Vallarta, helping local businesses look great online and win more customers.",
@@ -146,6 +147,7 @@
     privacyLink: "Lire l’avis de confidentialité", privacyName: "avis de confidentialité", consent: "J’ai lu et j’accepte l’",
     eConsent: "Pour envoyer, acceptez l’avis de confidentialité.",
     legalUpdated: "Dernière mise à jour : 18 octobre 2026.", legalLang: "Cet avis est publié en espagnol, qui est la version juridiquement applicable.",
+    styleWord: "Style", mFluid: "Fluide", mEditorial: "Éditorial",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
     aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
     aboutBody1: "Depuis deux ans, nous aidons à Puerto Vallarta les entreprises locales à soigner leur image en ligne et à gagner des clients.",
@@ -196,6 +198,7 @@
     $$("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === next)));
     store.set("lang", next);
+    syncModeUi();
     updateTitle();
     placeFilterThumb();
   }
@@ -234,11 +237,13 @@
 
   /* ================= MODES ================= */
   const modeButtons = $$("[data-set-mode]");
-  const themeColor = { minimal: "#fafaf9", premium: "#0b0c0e", interactive: "#edf1f6" };
+  const themeColor = { fluid: "#f7f8fb", minimal: "#fafaf9", premium: "#0b0c0e", interactive: "#f1f2f4", editorial: "#fafafa", bold: "#fff4d8" };
   function syncModeUi() {
     const mode = root.dataset.mode;
     modeButtons.forEach((b) => b.setAttribute("aria-checked", String(b.dataset.setMode === mode)));
     $('meta[name="theme-color"]').content = themeColor[mode];
+    const on = modeButtons.find((b) => b.dataset.setMode === mode);
+    $(".style-current").textContent = on ? on.textContent.trim() : mode;
   }
   function applyMode(mode) {
     root.dataset.mode = mode;
@@ -259,22 +264,32 @@
     if (document.startViewTransition && !reduceMotion.matches) document.startViewTransition(() => applyMode(mode));
     else applyMode(mode);
   }
-  modeButtons.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.setMode)));
-  $(".mode-switch").addEventListener("keydown", (e) => {
+  // Style picker: a button that opens a short menu of styles (radio group).
+  const toggle = $(".style-toggle"), menu = $("#style-menu");
+  function openMenu(open) {
+    menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    if (open) (modeButtons.find((b) => b.getAttribute("aria-checked") === "true") || modeButtons[0]).focus();
+  }
+  toggle.addEventListener("click", () => openMenu(menu.hidden));
+  modeButtons.forEach((b) => b.addEventListener("click", () => { setMode(b.dataset.setMode); openMenu(false); toggle.focus(); }));
+  menu.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { openMenu(false); toggle.focus(); return; }
     const dir = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
     if (!dir) return;
     e.preventDefault();
-    const i = modeButtons.findIndex((b) => b.dataset.setMode === root.dataset.mode);
-    const next = modeButtons[(i + dir + modeButtons.length) % modeButtons.length];
-    setMode(next.dataset.setMode);
-    next.focus();
+    const i = modeButtons.indexOf(document.activeElement);
+    modeButtons[(i + dir + modeButtons.length) % modeButtons.length].focus();
   });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !e.target.closest(".style-picker")) openMenu(false); });
 
   /* ================= HERO VIDEO ================= */
   const heroVideos = $$(".hero-video");
   function syncVideos() {
     heroVideos.forEach((v) => {
-      const on = v.dataset.videoMode === root.dataset.mode && current === "inicio" && !reduceMotion.matches;
+      const mine = v.dataset.videoModes.split(" ").includes(root.dataset.mode);
+      v.classList.toggle("on", mine);
+      const on = mine && current === "inicio" && !reduceMotion.matches;
       if (on) {
         if (v.preload === "none") { v.preload = "auto"; v.load(); }
         v.play().catch(() => {});

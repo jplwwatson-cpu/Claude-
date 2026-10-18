@@ -5,7 +5,7 @@ Static, multi-page site for a web design studio in Puerto Vallarta. No build ste
 ## Structure
 
 - Five tabs: Inicio, Servicios, Trabajo, Nosotros, Contacto. Each tab is a `<section data-page>` in `index.html`, switched by the URL hash (`#servicios`). On tablets and phones the tabs become a bottom tab bar.
-- Three styles from the switch at the top center: Minimalistic, Premium, Interactive. Each one has its own layouts in `styles.css` under `[data-mode="minimal"]`, `[data-mode="premium"]` and `[data-mode="interactive"]`. The choice is saved and also works as a link: `?mode=interactive`.
+- Six styles from the Style menu at the top center: Fluid (default), Minimalistic, Premium, Interactive, Editorial and Bold. Each one has its own tokens and layouts in `styles.css` under `[data-mode="fluid"]`, `minimal`, `premium`, `interactive`, `editorial` and `bold`. The content is the same in all of them. The choice is saved and also works as a link: `?mode=editorial`.
 - Home hero: one video per style in `video/` (MP4 with a WebM fallback, 720p, no audio), each with a poster in `img/`. `app.js` loads and plays only the clip for the current style and pauses it on other tabs or under reduced motion.
 - Photos and footage of Puerto Vallarta in `img/` and `video/` were supplied by the site owner from Pexels (free for commercial use).
 - Work concepts are brand covers: some on photos (`.cover.photo`), some typographic, all in `styles.css`.

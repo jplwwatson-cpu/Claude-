@@ -1,0 +1,5 @@
+# Deploys only the PV Websites static site in vallarta-web/ (no build step).
+[build]
+  base = "vallarta-web"
+  publish = "."
+  command = "echo 'static site, no build'"

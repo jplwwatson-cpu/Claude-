@@ -129,7 +129,7 @@ main:focus { outline: none; }
 .ph-plus::before { content: "\e3d4"; } .ph-x::before { content: "\e4f6"; }
 .ph-hand-grabbing::before { content: "\e57c"; } .ph-sparkle::before { content: "\e6a2"; }
 .ph-device-mobile::before { content: "\e1e0"; } .ph-lightning::before { content: "\e2de"; }
-.ph-handshake::before { content: "\e582"; } .ph-heart::before { content: "\e2a8"; }
+.ph-handshake::before { content: "\e582"; } .ph-whatsapp-logo::before { content: "\e5d0"; } .ph-heart::before { content: "\e2a8"; }
 
 .skip { position: absolute; left: 16px; top: -100px; z-index: 100; padding: 10px 16px; background: var(--btn-bg); color: var(--btn-text); }
 .skip:focus { top: 16px; }
@@ -572,6 +572,7 @@ main:focus { outline: none; }
 .contact-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 96px); align-items: start; padding-top: clamp(56px, 8vw, 112px); }
 .contact-copy { position: sticky; top: calc(var(--nav-h) + 48px); }
 .contact-copy > p:not(.eyebrow) { margin-top: 24px; color: var(--muted); font-size: 1.125rem; max-width: 40ch; }
+.contact-copy .contact-mail + .contact-mail { margin-top: 10px; }
 .contact-copy .contact-mail { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 500; }
 .contact-mail a { text-decoration-color: var(--line); text-underline-offset: 6px; user-select: all; }
 .contact-mail a:hover { text-decoration-color: var(--accent); }

@@ -1,9 +1,9 @@
 // A stylized, procedurally modeled take on "El Caballito", the bronze boy riding a seahorse on the
 // Puerto Vallarta Malecón. Built from primitives so the site ships no model files.
-import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import * as THREE from "./vendor/three.module.min.js";
+import { OrbitControls } from "./vendor/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "./vendor/addons/environments/RoomEnvironment.js";
+import { GLTFLoader } from "./vendor/addons/loaders/GLTFLoader.js";
 
 // Drop a real scan of the statue at this path (for example from Polycam or RealityScan) and it
 // replaces the hand-built model below automatically.

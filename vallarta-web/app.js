@@ -85,6 +85,7 @@
     activate: "Almost there: the inbox owner must click the activation link FormSubmit just emailed. After that, messages arrive.",
     fileProto: "The form only sends from the published site (for example on Netlify), not from a file opened on your computer.",
     interest: "I am interested in a site like this concept:",
+    preview: "This is a preview, so the form does not send. Write to us at jplw.watson@gmail.com.",
   };
   const fr = {
     skip: "Aller au contenu", modeLabel: "Style du site", modeInteractive: "Interactif", navLabel: "Principal", langLabel: "Langue",
@@ -158,6 +159,7 @@
     activate: "Presque prêt : le propriétaire de la boîte doit cliquer sur le lien d’activation envoyé par FormSubmit. Ensuite, les messages arrivent.",
     fileProto: "Le formulaire n’envoie que depuis le site publié (par exemple sur Netlify), pas depuis un fichier ouvert sur votre ordinateur.",
     interest: "Je suis intéressé par un site comme ce concept :",
+    preview: "Ceci est un aperçu : le formulaire n’envoie rien. Écrivez-nous à jplw.watson@gmail.com.",
   };
   const es = {
     navLabel: "Principal", langLabel: "Idioma",
@@ -167,6 +169,7 @@
     activate: "Casi listo: el dueño del correo debe hacer clic en el enlace de activación que FormSubmit acaba de enviar. Después llegan los mensajes.",
     fileProto: "El formulario solo envía desde el sitio publicado (por ejemplo en Netlify), no desde un archivo abierto en tu computadora.",
     interest: "Me interesa un sitio como este concepto:",
+    preview: "Esta es una vista previa y el formulario no envía. Escríbenos a jplw.watson@gmail.com.",
   };
   $$("[data-i18n]").forEach((el) => { es[el.dataset.i18n] ??= el.textContent; });
   $$("[data-i18n-alt]").forEach((el) => { es[el.dataset.i18nAlt] ??= el.alt; });
@@ -233,7 +236,7 @@
     store.set("mode", mode);
     const url = new URL(location.href);
     url.searchParams.set("mode", mode);
-    history.replaceState(null, "", url);
+    try { history.replaceState(null, "", url); } catch {}
     $$(".tilt-on").forEach((el) => { el.style.transform = ""; });
     $$(".magnetic").forEach((el) => { el.style.translate = ""; });
     sceneSync();
@@ -439,6 +442,7 @@
     if (results.includes(false)) { required[results.indexOf(false)].input.focus(); return; }
     if (form._honey.value) return;
     if (location.protocol === "file:") { say("fail", "fileProto"); return; }
+    if (!(form.getAttribute("action") || "").includes("formsubmit.co")) { say("fail", "preview"); return; }
 
     const data = new FormData(form);
     const body = {};

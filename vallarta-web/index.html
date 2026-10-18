@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es" data-mode="premium">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Malecón Studio | Diseño web en Puerto Vallarta</title>
+  <meta name="description" content="Diseño y desarrollo de sitios web profesionales en Puerto Vallarta, Jalisco. Sitios bilingües, tiendas en línea y SEO local para negocios de Bahía de Banderas.">
+  <meta name="theme-color" content="#0a0b0d">
+  <meta property="og:title" content="Malecón Studio | Diseño web en Puerto Vallarta">
+  <meta property="og:description" content="Sitios web profesionales para negocios de Puerto Vallarta y Bahía de Banderas.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,400..600&display=swap">
+  <link rel="preload" href="fonts/Phosphor-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved mode before first paint so the page never flashes the wrong style.
+    try {
+      var m = new URLSearchParams(location.search).get("mode") || localStorage.getItem("mode");
+      if (m === "minimal" || m === "premium" || m === "interactive") document.documentElement.dataset.mode = m;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#inicio" aria-label="Malecón Studio, inicio">
+      <span class="brand-mark" aria-hidden="true">M</span>
+      <span class="brand-name">Malecón<span class="brand-dim">Studio</span></span>
+    </a>
+
+    <div class="mode-switch" role="radiogroup" aria-label="Estilo del sitio" data-i18n-aria="modeLabel">
+      <span class="mode-thumb" aria-hidden="true"></span>
+      <button type="button" role="radio" data-set-mode="minimal" aria-checked="false">Minimal</button>
+      <button type="button" role="radio" data-set-mode="premium" aria-checked="true">Premium</button>
+      <button type="button" role="radio" data-set-mode="interactive" aria-checked="false" data-i18n="modeInteractive">Interactivo</button>
+    </div>
+
+    <div class="nav-end">
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#servicios" data-i18n="navServices">Servicios</a>
+        <a href="#trabajo" data-i18n="navWork">Trabajo</a>
+        <a href="#nosotros" data-i18n="navAbout">Nosotros</a>
+      </nav>
+      <button type="button" class="lang" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="btn btn-primary btn-sm magnetic" href="#contacto"><span data-i18n="ctaQuote">Cotizar proyecto</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <canvas class="waves" aria-hidden="true"></canvas>
+      <figure class="hero-media">
+        <!-- Reemplazar con una foto real de Puerto Vallarta (1600x1200) -->
+        <img src="https://picsum.photos/seed/vallarta-bahia-atardecer/1600/1200" alt="Atardecer sobre la Bahía de Banderas" data-i18n-alt="heroAlt" width="1600" height="1200" fetchpriority="high">
+      </figure>
+      <div class="hero-copy">
+        <p class="eyebrow reveal" data-i18n="heroEyebrow">Estudio web en Puerto Vallarta</p>
+        <h1 class="hero-title reveal" data-scramble>
+          <span data-i18n="heroTitleA">Sitios web que hacen</span>
+          <span class="inline-pill" aria-hidden="true"></span>
+          <em data-i18n="heroTitleB">crecer tu negocio.</em>
+        </h1>
+        <p class="lead reveal" data-i18n="heroLead">Diseño, desarrollo y SEO local para restaurantes, hoteles, tours y negocios de Bahía de Banderas.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary magnetic" href="#contacto">
+            <span data-i18n="ctaQuote">Cotizar proyecto</span>
+            <span class="btn-icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+          </a>
+          <a class="btn btn-ghost magnetic" href="#trabajo"><span data-i18n="ctaWork">Ver trabajo</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREAS (single marquee on the page) -->
+    <section class="areas" aria-label="Zonas donde trabajamos" data-i18n-aria="areasLabel">
+      <div class="marquee">
+        <ul class="marquee-track">
+          <li>Zona Romántica</li><li>Centro</li><li>Marina Vallarta</li><li>Versalles</li>
+          <li>Nuevo Vallarta</li><li>Bucerías</li><li>Sayulita</li><li>Punta de Mita</li>
+        </ul>
+        <ul class="marquee-track" aria-hidden="true">
+          <li>Zona Romántica</li><li>Centro</li><li>Marina Vallarta</li><li>Versalles</li>
+          <li>Nuevo Vallarta</li><li>Bucerías</li><li>Sayulita</li><li>Punta de Mita</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICES: 5 items, 5 cells -->
+    <section class="section services" id="servicios">
+      <div class="wrap">
+        <h2 class="section-title reveal" data-i18n="servicesTitle">Todo lo que tu negocio necesita en línea.</h2>
+        <div class="bento">
+          <article class="cell cell-feature card reveal">
+            <div class="card-core">
+              <img src="https://picsum.photos/seed/vallarta-sitio-web-diseno/1200/900" alt="" loading="lazy" width="1200" height="900">
+              <div class="cell-body">
+                <i class="ph ph-browsers cell-icon" aria-hidden="true"></i>
+                <h3 data-i18n="s1Title">Sitios web a medida</h3>
+                <p data-i18n="s1Body">Diseño propio, nada de plantillas. Rápido en celular y fácil de actualizar.</p>
+              </div>
+            </div>
+          </article>
+          <article class="cell card reveal">
+            <div class="card-core">
+              <i class="ph ph-shopping-bag-open cell-icon" aria-hidden="true"></i>
+              <h3 data-i18n="s2Title">Tiendas en línea</h3>
+              <p data-i18n="s2Body">Vende productos, tours o reservaciones con pagos con tarjeta y OXXO.</p>
+            </div>
+          </article>
+          <article class="cell cell-tint card reveal">
+            <div class="card-core">
+              <i class="ph ph-map-pin-area cell-icon" aria-hidden="true"></i>
+              <h3 data-i18n="s3Title">SEO local y Google Maps</h3>
+              <p data-i18n="s3Body">Que te encuentren cuando alguien busca lo que ofreces en Vallarta.</p>
+            </div>
+          </article>
+          <article class="cell cell-wide card reveal">
+            <div class="card-core">
+              <i class="ph ph-translate cell-icon" aria-hidden="true"></i>
+              <h3 data-i18n="s4Title">Bilingüe desde el inicio</h3>
+              <p data-i18n="s4Body">Español e inglés bien escritos, para clientes locales, turistas y residentes extranjeros.</p>
+            </div>
+          </article>
+          <article class="cell cell-accent card reveal">
+            <div class="card-core">
+              <i class="ph ph-lifebuoy cell-icon" aria-hidden="true"></i>
+              <h3 data-i18n="s5Title">Hosting y soporte</h3>
+              <p data-i18n="s5Body">Nos encargamos del dominio, la seguridad y los cambios.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK: concept designs, honestly labeled -->
+    <section class="section work" id="trabajo">
+      <div class="wrap">
+        <h2 class="section-title reveal" data-i18n="workTitle">Conceptos de diseño para negocios de la bahía.</h2>
+        <p class="section-lead reveal" data-i18n="workLead">Así se puede ver tu negocio. Cada concepto se adapta a tu marca.</p>
+      </div>
+      <div class="work-track" tabindex="0" role="region" aria-label="Conceptos de diseño" data-i18n-aria="workLabel">
+        <article class="work-card reveal">
+          <div class="work-img"><img src="https://picsum.photos/seed/vallarta-mariscos-restaurante/900/1100" alt="" loading="lazy" width="900" height="1100"></div>
+          <h3 data-i18n="w1Title">Restaurante de mariscos</h3>
+          <p data-i18n="w1Body">Menú en línea, reservaciones y botón de WhatsApp.</p>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-img"><img src="https://picsum.photos/seed/vallarta-hotel-boutique/900/1100" alt="" loading="lazy" width="900" height="1100"></div>
+          <h3 data-i18n="w2Title">Hotel boutique</h3>
+          <p data-i18n="w2Body">Galería de habitaciones y reservas directas sin comisiones.</p>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-img"><img src="https://picsum.photos/seed/vallarta-bienes-raices/900/1100" alt="" loading="lazy" width="900" height="1100"></div>
+          <h3 data-i18n="w3Title">Bienes raíces</h3>
+          <p data-i18n="w3Body">Listados con filtros, mapa y fichas bilingües.</p>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-img"><img src="https://picsum.photos/seed/vallarta-tours-barco/900/1100" alt="" loading="lazy" width="900" height="1100"></div>
+          <h3 data-i18n="w4Title">Tours en barco</h3>
+          <p data-i18n="w4Body">Calendario, pagos en línea y reseñas de Google.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process">
+      <div class="wrap">
+        <h2 class="section-title reveal" data-i18n="processTitle">De la primera llamada al lanzamiento.</h2>
+        <ol class="steps">
+          <li class="step reveal">
+            <i class="ph ph-chats" aria-hidden="true"></i>
+            <h3 data-i18n="p1Title">Conversamos</h3>
+            <p data-i18n="p1Body">Conocemos tu negocio, tus clientes y lo que quieres lograr.</p>
+          </li>
+          <li class="step reveal">
+            <i class="ph ph-pen-nib" aria-hidden="true"></i>
+            <h3 data-i18n="p2Title">Diseñamos</h3>
+            <p data-i18n="p2Body">Te mostramos el diseño antes de programar una sola línea.</p>
+          </li>
+          <li class="step reveal">
+            <i class="ph ph-code" aria-hidden="true"></i>
+            <h3 data-i18n="p3Title">Construimos</h3>
+            <p data-i18n="p3Body">Código limpio, rápido y listo para Google.</p>
+          </li>
+          <li class="step reveal">
+            <i class="ph ph-rocket-launch" aria-hidden="true"></i>
+            <h3 data-i18n="p4Title">Lanzamos</h3>
+            <p data-i18n="p4Body">Publicamos tu sitio y te enseñamos a usarlo.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="nosotros">
+      <div class="wrap about-grid">
+        <figure class="about-media card reveal">
+          <div class="card-core">
+            <!-- Reemplazar con una foto real del equipo o de Vallarta (1000x1200) -->
+            <img src="https://picsum.photos/seed/vallarta-malecon-estudio/1000/1200" alt="Vista del malecón de Puerto Vallarta" data-i18n-alt="aboutAlt" loading="lazy" width="1000" height="1200">
+          </div>
+        </figure>
+        <div class="about-copy">
+          <p class="eyebrow reveal" data-i18n="aboutEyebrow">Sobre nosotros</p>
+          <h2 class="section-title reveal" data-i18n="aboutTitle">Hacemos sitios web profesionales.</h2>
+          <p class="reveal" data-i18n="aboutBody1">Llevamos dos años en Puerto Vallarta ayudando a negocios locales a verse bien en internet y a recibir más clientes.</p>
+          <p class="reveal" data-i18n="aboutBody2">Trabajamos en persona, en español y en inglés. Cuando tu sitio está publicado, seguimos aquí para lo que necesites.</p>
+          <dl class="facts reveal">
+            <div><dt data-count="2">2</dt><dd data-i18n="fact1">años en Puerto Vallarta</dd></div>
+            <div><dt>ES / EN</dt><dd data-i18n="fact2">atención bilingüe</dd></div>
+            <div><dt>1:1</dt><dd data-i18n="fact3">trato directo, sin intermediarios</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contacto">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <h2 class="section-title reveal" data-i18n="contactTitle">Cuéntanos de tu proyecto.</h2>
+          <p class="reveal" data-i18n="contactLead">Escríbenos y te respondemos por correo con una propuesta y un precio claro.</p>
+          <a class="contact-mail reveal" href="mailto:jplw.watson@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i> jplw.watson@gmail.com</a>
+        </div>
+
+        <!--
+          The form posts to FormSubmit, which forwards each message to the address in `action`.
+          To change the inbox, edit only this action URL (and the mailto link above).
+          The first submission sends an activation email to that inbox; click it once.
+        -->
+        <form class="form card reveal" action="https://formsubmit.co/jplw.watson@gmail.com" method="POST" novalidate>
+          <div class="card-core">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio web">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="field">
+              <label for="f-name" data-i18n="fName">Nombre</label>
+              <input id="f-name" name="nombre" type="text" autocomplete="name" required maxlength="120">
+              <p class="error" id="f-name-err" data-i18n="eName">Escribe tu nombre.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-email" data-i18n="fEmail">Correo</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160">
+                <p class="error" id="f-email-err" data-i18n="eEmail">Escribe un correo válido.</p>
+              </div>
+              <div class="field">
+                <label for="f-phone"><span data-i18n="fPhone">WhatsApp</span> <span class="opt" data-i18n="optional">(opcional)</span></label>
+                <input id="f-phone" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="30">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-type" data-i18n="fType">Tipo de proyecto</label>
+              <select id="f-type" name="tipo">
+                <option value="Sitio nuevo" data-i18n="o1">Sitio web nuevo</option>
+                <option value="Rediseño" data-i18n="o2">Rediseño de mi sitio</option>
+                <option value="Tienda en línea" data-i18n="o3">Tienda en línea</option>
+                <option value="SEO local" data-i18n="o4">SEO y Google Maps</option>
+                <option value="Otro" data-i18n="o5">Otro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg" data-i18n="fMsg">Mensaje</label>
+              <textarea id="f-msg" name="mensaje" rows="5" required maxlength="4000" aria-describedby="f-msg-help"></textarea>
+              <p class="help" id="f-msg-help" data-i18n="hMsg">¿Qué hace tu negocio y qué te gustaría lograr con tu sitio?</p>
+              <p class="error" id="f-msg-err" data-i18n="eMsg">Escribe un mensaje.</p>
+            </div>
+
+            <button class="btn btn-primary btn-submit magnetic" type="submit">
+              <span class="label-idle" data-i18n="send">Enviar mensaje</span>
+              <span class="label-busy" data-i18n="sending">Enviando…</span>
+              <span class="btn-icon" aria-hidden="true"><i class="ph ph-paper-plane-tilt"></i></span>
+            </button>
+
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <a class="brand" href="#inicio" aria-label="Malecón Studio, inicio">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-name">Malecón<span class="brand-dim">Studio</span></span>
+      </a>
+      <p data-i18n="footerPlace">Puerto Vallarta, Jalisco, México</p>
+      <nav class="footer-links" aria-label="Pie de página" data-i18n-aria="footerLabel">
+        <a href="#servicios" data-i18n="navServices">Servicios</a>
+        <a href="#trabajo" data-i18n="navWork">Trabajo</a>
+        <a href="#nosotros" data-i18n="navAbout">Nosotros</a>
+        <a href="#contacto" data-i18n="ctaQuote">Cotizar proyecto</a>
+      </nav>
+      <p class="copy">© <span data-year>2026</span> Malecón Studio</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

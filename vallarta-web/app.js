@@ -16,7 +16,7 @@
   const en = {
     skip: "Skip to content", modeLabel: "Site style", modeInteractive: "Interactive", navLabel: "Main", langLabel: "Language",
     navHome: "Home", navServices: "Services", navWork: "Work", navAbout: "About", navContact: "Contact",
-    heroAlt: "The Puerto Vallarta boardwalk and its palm trees", heroEyebrow: "Web studio in Puerto Vallarta",
+    heroEyebrow: "Web studio in Puerto Vallarta",
     heroTitleA: "Websites that help", heroTitleB: "your business grow.",
     heroLead: "Design, development and local SEO for restaurants, hotels, tours and businesses around Banderas Bay.",
     ctaQuote: "Get a quote", ctaWork: "See our work",
@@ -62,7 +62,7 @@
     w8Title: "Condos in the Marina", w8Body: "Pre-sale with floor plans, construction updates and an interest form.", w8a: "Floor plans and pre-sale prices", w8b: "Construction updates with photos", w8c: "Interest form",
     c1: "Seafood", c2: "Beach club", c3: "Hotel", c4: "Villa", c5: "On board", c6: "Surf", c7: "Homes", c8: "Marina",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
-    aboutAlt: "Los Muertos beach and pier in Puerto Vallarta", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
+    aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
     aboutBody1: "For two years we have been in Puerto Vallarta, helping local businesses look great online and win more customers.",
     aboutBody2: "We work face to face, in Spanish, English and French. Once your site is live, we are still here for whatever you need.",
     fact1: "years in Puerto Vallarta", fact2: "languages: Spanish, English and French", fact3: "direct contact, no middlemen",
@@ -89,7 +89,7 @@
   const fr = {
     skip: "Aller au contenu", modeLabel: "Style du site", modeInteractive: "Interactif", navLabel: "Principal", langLabel: "Langue",
     navHome: "Accueil", navServices: "Services", navWork: "Projets", navAbout: "À propos", navContact: "Contact",
-    heroAlt: "Le malecón de Puerto Vallarta et ses palmiers", heroEyebrow: "Studio web à Puerto Vallarta",
+    heroEyebrow: "Studio web à Puerto Vallarta",
     heroTitleA: "Des sites web qui font", heroTitleB: "grandir votre entreprise.",
     heroLead: "Design, développement et référencement local pour restaurants, hôtels, excursions et commerces de la baie de Banderas.",
     ctaQuote: "Demander un devis", ctaWork: "Voir nos projets",
@@ -135,7 +135,7 @@
     w8Title: "Condos à la Marina", w8Body: "Prévente avec plans, avancement des travaux et formulaire d’intérêt.", w8a: "Plans et prix de prévente", w8b: "Avancement des travaux en photos", w8c: "Formulaire d’intérêt",
     c1: "Fruits de mer", c2: "Beach club", c3: "Hôtel", c4: "Villa", c5: "À bord", c6: "Surf", c7: "Maisons", c8: "Marina",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
-    aboutAlt: "La plage de Los Muertos et sa jetée à Puerto Vallarta", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
+    aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
     aboutBody1: "Depuis deux ans, nous aidons à Puerto Vallarta les entreprises locales à soigner leur image en ligne et à gagner des clients.",
     aboutBody2: "Nous travaillons en personne, en espagnol, en anglais et en français. Une fois votre site en ligne, nous restons là pour vous.",
     fact1: "ans à Puerto Vallarta", fact2: "langues : espagnol, anglais et français", fact3: "contact direct, sans intermédiaire",
@@ -209,6 +209,7 @@
       window.scrollTo(0, 0);
       updateTitle();
       placeFilterThumb();
+      syncVideos();
     };
     if (current && document.startViewTransition && !reduceMotion.matches) document.startViewTransition(swap);
     else swap();
@@ -238,6 +239,7 @@
     $$(".magnetic").forEach((el) => { el.style.translate = ""; });
     heroMedia.style.transform = "";
     placeFilterThumb();
+    syncVideos();
     if (mode === "interactive") scramble();
   }
   function setMode(mode) {
@@ -255,6 +257,19 @@
     setMode(next.dataset.setMode);
     next.focus();
   });
+
+  /* ================= HERO VIDEO ================= */
+  const heroVideos = $$(".hero-video");
+  function syncVideos() {
+    heroVideos.forEach((v) => {
+      const on = v.dataset.videoMode === root.dataset.mode && current === "inicio" && !reduceMotion.matches;
+      if (on) {
+        if (v.preload === "none") { v.preload = "auto"; v.load(); }
+        v.play().catch(() => {});
+      } else v.pause();
+    });
+  }
+  reduceMotion.addEventListener("change", syncVideos);
 
   /* ================= REVEAL ON SCROLL ================= */
   const reveals = $$(".reveal");

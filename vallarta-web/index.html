@@ -61,7 +61,10 @@
     <section class="page page-home" id="inicio" data-page="inicio" aria-labelledby="h-home">
       <div class="hero">
         <figure class="hero-media">
-          <img src="img/malecon.webp" alt="El malecón de Puerto Vallarta con sus palmeras" data-i18n-alt="heroAlt" width="1080" height="1104" fetchpriority="high">
+          <!-- One clip per style; app.js plays only the one that is showing. Footage: Pexels. -->
+          <video class="hero-video" data-video-mode="minimal" muted loop playsinline preload="none" poster="img/centro-poster.webp" aria-hidden="true"><source src="video/centro.mp4" type="video/mp4"><source src="video/centro.webm" type="video/webm"></video>
+          <video class="hero-video" data-video-mode="premium" muted loop playsinline preload="none" poster="img/malecon-poster.webp" aria-hidden="true"><source src="video/malecon.mp4" type="video/mp4"><source src="video/malecon.webm" type="video/webm"></video>
+          <video class="hero-video" data-video-mode="interactive" muted loop playsinline preload="none" poster="img/playa-poster.webp" aria-hidden="true"><source src="video/playa.mp4" type="video/mp4"><source src="video/playa.webm" type="video/webm"></video>
         </figure>
         <div class="hero-copy">
           <p class="eyebrow reveal" data-i18n="heroEyebrow">Estudio web en Puerto Vallarta</p>
@@ -126,11 +129,11 @@
         </div>
         <div class="featured-track" tabindex="0" role="region" aria-label="Conceptos recientes" data-i18n-aria="featuredTitle">
           <a class="featured-card reveal" href="#trabajo">
-            <div class="featured-img"><span class="cover cv3" aria-hidden="true"><span class="cover-word" data-i18n="c3">Hotel</span><span class="cover-mark">PV</span></span></div>
+            <div class="featured-img"><span class="cover cv3 photo" aria-hidden="true"><span class="cover-word" data-i18n="c3">Hotel</span><span class="cover-mark">PV</span></span></div>
             <span data-i18n="w3Title">Hotel boutique</span>
           </a>
           <a class="featured-card reveal" href="#trabajo">
-            <div class="featured-img"><span class="cover cv5" aria-hidden="true"><span class="cover-word" data-i18n="c5">A bordo</span><span class="cover-mark">PV</span></span></div>
+            <div class="featured-img"><span class="cover cv5 photo" aria-hidden="true"><span class="cover-word" data-i18n="c5">A bordo</span><span class="cover-mark">PV</span></span></div>
             <span data-i18n="w5Title">Tours en barco</span>
           </a>
           <a class="featured-card reveal" href="#trabajo">
@@ -313,7 +316,7 @@
             <span class="work-list" hidden><span data-i18n="w1a">Menú con fotos y precios</span>|<span data-i18n="w1b">Reservaciones en línea</span>|<span data-i18n="w1c">Botón de WhatsApp y mapa</span></span>
           </button>
           <button type="button" class="work-card" data-cat="food">
-            <span class="work-img"><span class="cover cv2" aria-hidden="true"><span class="cover-word" data-i18n="c2">Beach club</span><span class="cover-mark">PV</span></span></span>
+            <span class="work-img"><span class="cover cv2 photo" aria-hidden="true"><span class="cover-word" data-i18n="c2">Beach club</span><span class="cover-mark">PV</span></span></span>
             <span class="work-meta">
               <span class="work-title" data-i18n="w2Title">Club de playa</span>
               <span class="work-cat" data-i18n="fFood">Restaurantes</span>
@@ -322,7 +325,7 @@
             <span class="work-list" hidden><span data-i18n="w2a">Reserva de camastros</span>|<span data-i18n="w2b">Calendario de eventos</span>|<span data-i18n="w2c">Galería de Instagram</span></span>
           </button>
           <button type="button" class="work-card" data-cat="stay">
-            <span class="work-img"><span class="cover cv3" aria-hidden="true"><span class="cover-word" data-i18n="c3">Hotel</span><span class="cover-mark">PV</span></span></span>
+            <span class="work-img"><span class="cover cv3 photo" aria-hidden="true"><span class="cover-word" data-i18n="c3">Hotel</span><span class="cover-mark">PV</span></span></span>
             <span class="work-meta">
               <span class="work-title" data-i18n="w3Title">Hotel boutique</span>
               <span class="work-cat" data-i18n="fStay">Hospedaje</span>
@@ -331,7 +334,7 @@
             <span class="work-list" hidden><span data-i18n="w3a">Galería de habitaciones</span>|<span data-i18n="w3b">Motor de reservas directas</span>|<span data-i18n="w3c">Reseñas de huéspedes</span></span>
           </button>
           <button type="button" class="work-card" data-cat="stay">
-            <span class="work-img"><span class="cover cv4" aria-hidden="true"><span class="cover-word" data-i18n="c4">Villa</span><span class="cover-mark">PV</span></span></span>
+            <span class="work-img"><span class="cover cv4 photo" aria-hidden="true"><span class="cover-word" data-i18n="c4">Villa</span><span class="cover-mark">PV</span></span></span>
             <span class="work-meta">
               <span class="work-title" data-i18n="w4Title">Renta vacacional</span>
               <span class="work-cat" data-i18n="fStay">Hospedaje</span>
@@ -340,7 +343,7 @@
             <span class="work-list" hidden><span data-i18n="w4a">Calendario de disponibilidad</span>|<span data-i18n="w4b">Guía de la zona para huéspedes</span>|<span data-i18n="w4c">Contacto directo con el dueño</span></span>
           </button>
           <button type="button" class="work-card" data-cat="tours">
-            <span class="work-img"><span class="cover cv5" aria-hidden="true"><span class="cover-word" data-i18n="c5">A bordo</span><span class="cover-mark">PV</span></span></span>
+            <span class="work-img"><span class="cover cv5 photo" aria-hidden="true"><span class="cover-word" data-i18n="c5">A bordo</span><span class="cover-mark">PV</span></span></span>
             <span class="work-meta">
               <span class="work-title" data-i18n="w5Title">Tours en barco</span>
               <span class="work-cat" data-i18n="fTours">Tours</span>
@@ -358,7 +361,7 @@
             <span class="work-list" hidden><span data-i18n="w6a">Clases por nivel</span>|<span data-i18n="w6b">Renta de tablas</span>|<span data-i18n="w6c">Reporte de olas del día</span></span>
           </button>
           <button type="button" class="work-card" data-cat="homes">
-            <span class="work-img"><span class="cover cv7" aria-hidden="true"><span class="cover-word" data-i18n="c7">Casas</span><span class="cover-mark">PV</span></span></span>
+            <span class="work-img"><span class="cover cv7 photo" aria-hidden="true"><span class="cover-word" data-i18n="c7">Casas</span><span class="cover-mark">PV</span></span></span>
             <span class="work-meta">
               <span class="work-title" data-i18n="w7Title">Bienes raíces</span>
               <span class="work-cat" data-i18n="fHomes">Bienes raíces</span>
@@ -399,7 +402,7 @@
       <div class="about-hero">
         <figure class="about-media card reveal">
           <div class="card-core">
-            <img src="img/bahia.webp" alt="Playa de Los Muertos y el muelle en Puerto Vallarta" data-i18n-alt="aboutAlt" loading="lazy" width="765" height="777">
+            <img src="img/playa-palmeras.webp" alt="Playa y palmeras de Bahía de Banderas vistas desde lo alto" data-i18n-alt="aboutAlt" loading="lazy" width="1100" height="1650">
           </div>
         </figure>
         <div class="about-copy wrap">

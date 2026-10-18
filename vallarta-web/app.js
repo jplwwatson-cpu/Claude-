@@ -17,17 +17,17 @@
     skip: "Skip to content", modeLabel: "Site style", modeInteractive: "Interactive", navLabel: "Main", langLabel: "Language",
     navHome: "Home", navServices: "Services", navWork: "Work", navAbout: "About", navContact: "Contact",
     heroEyebrow: "Web studio in Puerto Vallarta",
-    heroTitleA: "Websites that help", heroTitleB: "your business grow.",
-    heroLead: "Design, development and local SEO for restaurants, hotels, tours and businesses around Banderas Bay.",
+    heroTitleA: "Websites for businesses in", heroTitleB: "Puerto Vallarta",
+    heroLead: "For restaurants, hotels, tours and real estate around the bay, in Spanish, English and French.",
     ctaQuote: "Get a quote", ctaWork: "See our work",
     areasLabel: "Areas we work in",
-    whyTitle: "A website as good as what you offer.",
-    why1Title: "Our own design", why1Body: "No templates. Your site looks like your business, not like the one next door.",
-    why2Title: "Fast on phones", why2Body: "Almost all your customers find you on their phone. We design for them first.",
-    why3Title: "In three languages", why3Body: "Spanish, English and French for locals, tourists and expats.",
-    featuredTitle: "Recent concepts.",
-    bandTitle: "Ready for your new website?", bandBody: "Tell us about your business and we will send you a clear proposal.",
-    servicesTitle: "Everything your business needs online.",
+    whyTitle: "Built for how Vallarta does business",
+    why1Title: "Three languages, well written", why1Body: "Your customers come from Guadalajara, the US, Canada and Quebec. The site speaks their language, with copy reviewed by people.",
+    why2Title: "Get found on the map", why2Body: "We set up your Google profile so you show up when someone searches for, say, seafood in the Zona Romántica.",
+    why3Title: "Messages reach your phone", why3Body: "A WhatsApp button and a form that goes straight to your email, with no platform taking a cut of every customer.",
+    featuredTitle: "Ideas for businesses around the bay",
+    bandTitle: "Message us on WhatsApp", bandBody: "Tell us what your business does and we will reply with a proposal and a price.",
+    servicesTitle: "What we do",
     servicesLead: "Pick one service or combine them. Every project includes design, development and launch.",
     s1Title: "Custom websites", s1Body: "Our own design, no templates. Fast on phones and easy to update.",
     s1a: "A unique design for your brand", s1b: "All the pages your business needs", s1c: "A panel to edit text and photos",
@@ -39,7 +39,7 @@
     s4a: "Language switch on every page", s4b: "Translations reviewed by people", s4c: "Google shows you in the right language",
     s5Title: "Hosting and support", s5Body: "We take care of the domain, security and updates.",
     s5a: "Domain and security certificate", s5b: "Backups and updates", s5c: "Content changes whenever you need them",
-    processTitle: "From the first call to launch day.",
+    processTitle: "From first message to live site",
     p1Title: "We talk", p1Body: "We learn about your business, your customers and your goals.",
     p2Title: "We design", p2Body: "You see the design before we write a single line of code.",
     p3Title: "We build", p3Body: "Clean, fast code that is ready for Google.",
@@ -49,7 +49,7 @@
     q2: "Can I update the site myself?", a2: "Yes. You get a simple panel to change text, photos and prices, and we show you how to use it.",
     q3: "Are the domain and hosting included?", a3: "We can take care of everything, or use the domain you already have. You always own your domain.",
     q4: "I already have a site. Can you improve it?", a4: "Yes. We review what you have, keep what works and redesign the rest.",
-    workTitle: "Design concepts for businesses around the bay.",
+    workTitle: "Concepts for businesses around the bay",
     workLead: "This is how your business could look. Tap a concept to see what it includes.",
     filterLabel: "Filter concepts", fAll: "All", fFood: "Restaurants", fStay: "Lodging", fTours: "Tours", fHomes: "Real estate",
     w1Title: "Seafood restaurant", w1Body: "Online menu, reservations and a WhatsApp button.", w1a: "Menu with photos and prices", w1b: "Online reservations", w1c: "WhatsApp button and map",
@@ -68,16 +68,17 @@
     eConsent: "To send, accept the privacy notice.",
     legalUpdated: "Last updated: October 18, 2026.", legalLang: "This notice is published in Spanish, which is the legally binding version.",
     styleWord: "Style", mFluid: "Fluid", mEditorial: "Editorial",
+    orForm: "or use the form",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
-    aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
+    aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "A small studio in Puerto Vallarta",
     aboutBody1: "For two years we have been in Puerto Vallarta, helping local businesses look great online and win more customers.",
     aboutBody2: "We work face to face, in Spanish, English and French. Once your site is live, we are still here for whatever you need.",
     fact1: "years in Puerto Vallarta", fact2: "languages: Spanish, English and French", fact3: "direct contact, no middlemen",
-    valuesTitle: "How we work.",
+    valuesTitle: "How we work",
     v1Title: "You talk to the designer", v1Body: "No salespeople, no middlemen. The person who listens to you is the one who builds your site.",
     v2Title: "Clear prices", v2Body: "You get a fixed price in writing before we start. No surprises.",
     v3Title: "We are local", v3Body: "We know Vallarta and its customers. You can meet us in person whenever you want.",
-    contactTitle: "Tell us about your project.",
+    contactTitle: "Tell us about your project",
     contactLead: "Build your project, send us a message and we will reply by email with a proposal and a clear price.",
     footerPlace: "Puerto Vallarta, Jalisco, Mexico", footerLabel: "Footer",
     bType: "What do you need?", o1: "New website", o2: "Redesign my site", o3: "Online store", o4: "SEO and Google Maps",
@@ -97,17 +98,17 @@
     skip: "Aller au contenu", modeLabel: "Style du site", modeInteractive: "Interactif", navLabel: "Principal", langLabel: "Langue",
     navHome: "Accueil", navServices: "Services", navWork: "Projets", navAbout: "À propos", navContact: "Contact",
     heroEyebrow: "Studio web à Puerto Vallarta",
-    heroTitleA: "Des sites web qui font", heroTitleB: "grandir votre entreprise.",
-    heroLead: "Design, développement et référencement local pour restaurants, hôtels, excursions et commerces de la baie de Banderas.",
+    heroTitleA: "Des sites web pour les commerces de", heroTitleB: "Puerto Vallarta",
+    heroLead: "Pour les restaurants, hôtels, excursions et agences immobilières de la baie, en espagnol, anglais et français.",
     ctaQuote: "Demander un devis", ctaWork: "Voir nos projets",
     areasLabel: "Zones où nous travaillons",
-    whyTitle: "Un site à la hauteur de ce que vous offrez.",
-    why1Title: "Un design unique", why1Body: "Aucun modèle tout fait. Votre site ressemble à votre entreprise, pas à celle d’à côté.",
-    why2Title: "Rapide sur mobile", why2Body: "Presque tous vos clients vous cherchent depuis leur téléphone. Nous pensons d’abord à eux.",
-    why3Title: "En trois langues", why3Body: "Espagnol, anglais et français pour les locaux, les touristes et les résidents étrangers.",
-    featuredTitle: "Concepts récents.",
-    bandTitle: "Prêt pour votre nouveau site ?", bandBody: "Parlez-nous de votre entreprise et nous vous enverrons une proposition claire.",
-    servicesTitle: "Tout ce dont votre entreprise a besoin en ligne.",
+    whyTitle: "Pensé pour le commerce à Vallarta",
+    why1Title: "Trois langues, bien écrites", why1Body: "Vos clients viennent de Guadalajara, des États-Unis, du Canada et du Québec. Le site leur parle dans leur langue, avec des textes relus par des personnes.",
+    why2Title: "Être trouvé sur la carte", why2Body: "Nous configurons votre fiche Google pour que vous apparaissiez quand on cherche, par exemple, des fruits de mer dans la Zona Romántica.",
+    why3Title: "Les messages arrivent sur votre téléphone", why3Body: "Un bouton WhatsApp et un formulaire qui arrive directement dans votre boîte mail, sans plateforme qui prend une commission sur chaque client.",
+    featuredTitle: "Des idées pour les commerces de la baie",
+    bandTitle: "Écrivez-nous sur WhatsApp", bandBody: "Dites-nous ce que fait votre entreprise et nous vous répondrons avec une proposition et un prix.",
+    servicesTitle: "Ce que nous faisons",
     servicesLead: "Choisissez un service ou combinez-les. Chaque projet comprend le design, le développement et la mise en ligne.",
     s1Title: "Sites web sur mesure", s1Body: "Un design unique, sans modèle. Rapide sur mobile et facile à mettre à jour.",
     s1a: "Un design unique pour votre marque", s1b: "Toutes les pages dont vous avez besoin", s1c: "Un panneau pour modifier textes et photos",
@@ -119,7 +120,7 @@
     s4a: "Sélecteur de langue sur chaque page", s4b: "Traductions relues par des personnes", s4c: "Google vous affiche dans la bonne langue",
     s5Title: "Hébergement et assistance", s5Body: "Nous nous occupons du domaine, de la sécurité et des modifications.",
     s5a: "Domaine et certificat de sécurité", s5b: "Sauvegardes et mises à jour", s5c: "Modifications de contenu quand vous voulez",
-    processTitle: "Du premier appel à la mise en ligne.",
+    processTitle: "Du premier message au site en ligne",
     p1Title: "On discute", p1Body: "Nous découvrons votre entreprise, vos clients et vos objectifs.",
     p2Title: "On dessine", p2Body: "Vous voyez le design avant que nous écrivions une seule ligne de code.",
     p3Title: "On construit", p3Body: "Un code propre, rapide et prêt pour Google.",
@@ -129,7 +130,7 @@
     q2: "Puis-je mettre à jour le site moi-même ?", a2: "Oui. Vous avez un panneau simple pour changer textes, photos et prix, et nous vous montrons comment faire.",
     q3: "Le domaine et l’hébergement sont-ils inclus ?", a3: "Nous pouvons tout gérer, ou utiliser le domaine que vous avez déjà. Le domaine reste toujours à vous.",
     q4: "J’ai déjà un site. Pouvez-vous l’améliorer ?", a4: "Oui. Nous analysons l’existant, gardons ce qui fonctionne et refaisons le reste.",
-    workTitle: "Concepts de design pour les entreprises de la baie.",
+    workTitle: "Concepts pour les commerces de la baie",
     workLead: "Voici à quoi pourrait ressembler votre entreprise. Touchez un concept pour voir ce qu’il comprend.",
     filterLabel: "Filtrer les concepts", fAll: "Tous", fFood: "Restaurants", fStay: "Hébergement", fTours: "Excursions", fHomes: "Immobilier",
     w1Title: "Restaurant de fruits de mer", w1Body: "Menu en ligne, réservations et bouton WhatsApp.", w1a: "Menu avec photos et prix", w1b: "Réservations en ligne", w1c: "Bouton WhatsApp et carte",
@@ -148,16 +149,17 @@
     eConsent: "Pour envoyer, acceptez l’avis de confidentialité.",
     legalUpdated: "Dernière mise à jour : 18 octobre 2026.", legalLang: "Cet avis est publié en espagnol, qui est la version juridiquement applicable.",
     styleWord: "Style", mFluid: "Fluide", mEditorial: "Éditorial",
+    orForm: "ou utilisez le formulaire",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
-    aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
+    aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Un petit studio à Puerto Vallarta",
     aboutBody1: "Depuis deux ans, nous aidons à Puerto Vallarta les entreprises locales à soigner leur image en ligne et à gagner des clients.",
     aboutBody2: "Nous travaillons en personne, en espagnol, en anglais et en français. Une fois votre site en ligne, nous restons là pour vous.",
     fact1: "ans à Puerto Vallarta", fact2: "langues : espagnol, anglais et français", fact3: "contact direct, sans intermédiaire",
-    valuesTitle: "Notre façon de travailler.",
+    valuesTitle: "Notre façon de travailler",
     v1Title: "Vous parlez au designer", v1Body: "Ni vendeurs ni intermédiaires. La personne qui vous écoute est celle qui crée votre site.",
     v2Title: "Des prix clairs", v2Body: "Vous recevez un prix fixe par écrit avant de commencer. Aucune surprise.",
     v3Title: "Nous sommes d’ici", v3Body: "Nous connaissons Vallarta et ses clients. Vous pouvez nous rencontrer quand vous voulez.",
-    contactTitle: "Parlez-nous de votre projet.",
+    contactTitle: "Parlez-nous de votre projet",
     contactLead: "Composez votre projet, écrivez-nous et nous répondrons par e-mail avec une proposition et un prix clair.",
     footerPlace: "Puerto Vallarta, Jalisco, Mexique", footerLabel: "Pied de page",
     bType: "De quoi avez-vous besoin ?", o1: "Nouveau site web", o2: "Refonte de mon site", o3: "Boutique en ligne", o4: "Référencement et Google Maps",
@@ -257,7 +259,6 @@
     heroMedia.style.transform = "";
     placeFilterThumb();
     syncVideos();
-    if (mode === "interactive") scramble();
   }
   function setMode(mode) {
     if (mode === root.dataset.mode) return;
@@ -383,23 +384,6 @@
     drag = null;
   });
 
-  function scramble() {
-    if (reduceMotion.matches || current !== "inicio") return;
-    const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    $$("[data-scramble] [data-i18n]").forEach((el) => {
-      const final = t(el.dataset.i18n);
-      let frame = 0;
-      const total = 22;
-      const tick = () => {
-        frame++;
-        const done = Math.floor((frame / total) * final.length);
-        el.textContent = [...final].map((c, i) => (i < done || c === " " ? c : glyphs[(Math.random() * glyphs.length) | 0])).join("");
-        if (frame < total) requestAnimationFrame(tick);
-        else el.textContent = t(el.dataset.i18n);
-      };
-      requestAnimationFrame(tick);
-    });
-  }
 
   /* ================= WORK: filters + detail dialog ================= */
   const filterButtons = $$("[data-filter]");
@@ -501,7 +485,6 @@
       if (!res.ok || String(json.success) === "false") throw new Error(json.message || res.status);
       form.reset();
       say("ok", "sent");
-      if (isInteractive()) confetti();
     } catch (err) {
       say("fail", err.name === "AbortError" ? "timeout" : "failed");
     } finally {
@@ -510,24 +493,6 @@
     }
   });
 
-  function confetti() {
-    const c = $(".confetti"), ctx = c.getContext("2d");
-    c.width = innerWidth; c.height = innerHeight;
-    const colors = ["#2448ff", "#ffb88c", "#0c1021", "#7aa8ff"];
-    const bits = Array.from({ length: 140 }, () => ({
-      x: innerWidth / 2, y: innerHeight * 0.6, vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 16 - 6,
-      s: 4 + Math.random() * 6, r: Math.random() * 6, c: colors[(Math.random() * colors.length) | 0],
-    }));
-    let frames = 0;
-    (function draw() {
-      ctx.clearRect(0, 0, c.width, c.height);
-      bits.forEach((b) => {
-        b.vy += 0.45; b.x += b.vx; b.y += b.vy; b.r += 0.1;
-        ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.c; ctx.fillRect(-b.s / 2, -b.s / 2, b.s, b.s * 0.6); ctx.restore();
-      });
-      if (++frames < 150) requestAnimationFrame(draw); else ctx.clearRect(0, 0, c.width, c.height);
-    })();
-  }
 
   /* ================= IMAGES: hide broken ones instead of showing a broken icon ================= */
   $$("img").forEach((img) => {

@@ -4,6 +4,14 @@
    - premium:     Night resort. Serif display, full-bleed photography, glass, double-bezel cards, sticky stacks.
    - interactive: Daylight playground. 3D Caballito, tilt and spotlight cards, drag carousels, springy motion. */
 
+/* Fonts are self-hosted (SIL OFL, licenses in fonts/licenses) so no visitor data goes to a font CDN. */
+@font-face { font-family: "Geist"; src: url("fonts/geist-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("fonts/geist-mono-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant-garamond-latin-wght-normal.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant-garamond-latin-wght-italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; }
+
 @font-face {
   font-family: "Phosphor-Light";
   src: url("fonts/Phosphor-Light.woff2") format("woff2");
@@ -685,6 +693,28 @@ main:focus { outline: none; }
   content: ""; position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+/* ================= LEGAL + FAQ PAGES ================= */
+.legal { max-width: 760px; padding-top: clamp(56px, 8vw, 112px); }
+.legal .page-title { font-size: clamp(2.25rem, 5vw, 3.75rem); margin-bottom: 16px; }
+.legal h2 { margin-top: 48px; margin-bottom: 12px; font-size: clamp(1.25rem, 2.2vw, 1.625rem); letter-spacing: -0.015em; }
+.legal p, .legal li { color: var(--muted); max-width: 68ch; }
+.legal p + p, .legal ul + p { margin-top: 12px; }
+.legal ul { display: grid; gap: 8px; margin-top: 12px; padding-left: 1.25em; list-style: disc; }
+.legal a { color: var(--text); text-underline-offset: 4px; }
+.legal-meta { font-size: 0.875rem; color: var(--muted); }
+.legal-meta:empty { display: none; }
+.fill { padding: 0 4px; border-radius: 4px; background: #ffe9a8; color: #3d2e00; }
+.faq-wrap { padding-bottom: 24px; }
+.faq details p + p { padding-top: 0; }
+.faq details a { color: inherit; text-underline-offset: 4px; }
+.more-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; text-underline-offset: 6px; }
+.more-link .ph { transition: transform 0.4s var(--glide); }
+.more-link:hover .ph { transform: translateX(4px); }
+.check { display: flex; align-items: flex-start; gap: 12px; font-weight: 400 !important; cursor: pointer; }
+.check input { flex: none; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--accent); }
+.check a { color: inherit; text-underline-offset: 3px; }
+[data-mode="minimal"] .check input { accent-color: #121212; }
 
 /* ================= FOOTER ================= */
 .footer { border-top: 1px solid var(--line); padding-block: 48px; color: var(--muted); font-size: 0.9375rem; }

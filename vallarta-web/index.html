@@ -9,9 +9,6 @@
   <meta property="og:title" content="PV Websites | Diseño web en Puerto Vallarta">
   <meta property="og:description" content="Sitios web profesionales para negocios de Puerto Vallarta y Bahía de Banderas.">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Cormorant+Garamond:ital,wght@0,400..600;1,400..600&family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&family=Plus+Jakarta+Sans:wght@300..700&display=swap">
   <link rel="preload" href="fonts/Phosphor-Light.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>
@@ -264,26 +261,8 @@
         </ol>
       </div>
 
-      <div class="section wrap faq-wrap">
-        <h2 class="section-title reveal" data-i18n="faqTitle">Preguntas frecuentes</h2>
-        <div class="faq">
-          <details class="reveal">
-            <summary><span data-i18n="q1">¿Cuánto tarda un sitio?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
-            <p data-i18n="a1">Depende del tamaño del proyecto. En la propuesta te damos una fecha de entrega clara y la cumplimos.</p>
-          </details>
-          <details class="reveal">
-            <summary><span data-i18n="q2">¿Puedo actualizar el sitio yo mismo?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
-            <p data-i18n="a2">Sí. Te dejamos un panel sencillo para cambiar textos, fotos y precios, y te enseñamos a usarlo.</p>
-          </details>
-          <details class="reveal">
-            <summary><span data-i18n="q3">¿Incluye dominio y hosting?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
-            <p data-i18n="a3">Podemos encargarnos de todo, o usar el dominio que ya tienes. Tú siempre eres el dueño de tu dominio.</p>
-          </details>
-          <details class="reveal">
-            <summary><span data-i18n="q4">¿Ya tengo sitio. Pueden mejorarlo?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
-            <p data-i18n="a4">Sí. Revisamos lo que tienes, conservamos lo que funciona y rediseñamos el resto.</p>
-          </details>
-        </div>
+      <div class="section wrap">
+        <a class="more-link reveal" href="#faq"><span data-i18n="faqLink">Ver preguntas frecuentes</span> <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </div>
     </section>
 
@@ -527,6 +506,14 @@
               <p class="error" id="f-msg-err" data-i18n="eMsg">Escribe un mensaje.</p>
             </div>
 
+            <div class="field consent">
+              <label class="check" for="f-consent">
+                <input id="f-consent" name="acepta_aviso_privacidad" type="checkbox" value="Sí" required>
+                <span><span data-i18n="consent">He leído y acepto el</span> <a href="#privacidad" data-i18n="privacyName">aviso de privacidad</a>.</span>
+              </label>
+              <p class="error" id="f-consent-err" data-i18n="eConsent">Para enviar, acepta el aviso de privacidad.</p>
+            </div>
+
             <button class="btn btn-primary btn-submit magnetic" type="submit">
               <span class="label-idle" data-i18n="send">Enviar mensaje</span>
               <span class="label-busy" data-i18n="sending">Enviando…</span>
@@ -537,6 +524,124 @@
           </div>
         </form>
       </div>
+    </section>
+
+    <!-- =================== PREGUNTAS FRECUENTES =================== -->
+    <section class="page page-faq" id="faq" data-page="faq" aria-labelledby="h-faq">
+      <header class="page-head wrap">
+        <h1 class="page-title reveal" id="h-faq" data-i18n="faqTitle">Preguntas frecuentes</h1>
+      </header>
+      <div class="wrap faq-wrap">
+        <div class="faq">
+          <details class="reveal">
+            <summary><span data-i18n="q1">¿Cuánto tarda un sitio?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a1">Depende del tamaño del proyecto. En la propuesta te damos una fecha de entrega clara y la cumplimos.</p>
+          </details>
+          <details class="reveal">
+            <summary><span data-i18n="q2">¿Puedo actualizar el sitio yo mismo?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a2">Sí. Te dejamos un panel sencillo para cambiar textos, fotos y precios, y te enseñamos a usarlo.</p>
+          </details>
+          <details class="reveal">
+            <summary><span data-i18n="q3">¿Incluye dominio y hosting?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a3">Podemos encargarnos de todo, o usar el dominio que ya tienes. Tú siempre eres el dueño de tu dominio.</p>
+          </details>
+          <details class="reveal">
+            <summary><span data-i18n="q4">¿Ya tengo sitio. Pueden mejorarlo?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a4">Sí. Revisamos lo que tienes, conservamos lo que funciona y rediseñamos el resto.</p>
+          </details>
+          <details class="reveal">
+            <summary><span data-i18n="q5">¿Cómo se paga un proyecto?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a5">La forma de pago y las fechas quedan por escrito en la propuesta antes de empezar.</p>
+          </details>
+          <details class="reveal">
+            <summary><span data-i18n="q6">¿Qué hacen con mis datos cuando les escribo?</span><i class="ph ph-plus" aria-hidden="true"></i></summary>
+            <p data-i18n="a6">Solo los usamos para responderte y preparar tu propuesta. No los vendemos ni los usamos para publicidad.</p>
+            <p><a href="#privacidad" data-i18n="privacyLink">Leer el aviso de privacidad</a></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== AVISO DE PRIVACIDAD ===================
+         Legal text is in Spanish only: it is the binding version under Mexican law.
+         Fill every [bracketed] field before publishing, and have a lawyer review it. -->
+    <section class="page page-legal" id="privacidad" data-page="privacidad" aria-labelledby="h-privacy" lang="es">
+      <article class="wrap legal">
+        <h1 class="page-title" id="h-privacy">Aviso de privacidad</h1>
+        <p class="legal-meta" data-i18n="legalUpdated">Última actualización: 18 de octubre de 2026.</p>
+        <p class="legal-meta" data-i18n="legalLang"></p>
+
+        <h2>Quién es responsable de tus datos</h2>
+        <p><mark class="fill">[Nombre completo o razón social]</mark>, que opera bajo el nombre comercial PV Websites, con domicilio en <mark class="fill">[calle, número, colonia, código postal]</mark>, Puerto Vallarta, Jalisco, México, es responsable del uso y protección de tus datos personales, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</p>
+        <p>Contacto para temas de privacidad: <a href="mailto:jplw.watson@gmail.com">jplw.watson@gmail.com</a>.</p>
+
+        <h2>Qué datos recabamos</h2>
+        <p>Cuando nos escribes por el formulario o por correo: nombre, correo electrónico, número de WhatsApp (opcional), el tipo de proyecto que eliges y el mensaje que nos envías.</p>
+        <p>No pedimos datos sensibles ni datos financieros. Por favor no los incluyas en tu mensaje.</p>
+
+        <h2>Para qué los usamos</h2>
+        <ul>
+          <li>Responder a tu mensaje.</li>
+          <li>Preparar y enviarte una propuesta y cotización.</li>
+          <li>Dar seguimiento a tu proyecto y prestarte los servicios que contrates.</li>
+        </ul>
+        <p>No usamos tus datos para publicidad ni los vendemos. Si algún día quisiéramos usarlos para otra finalidad, te pediremos tu consentimiento antes.</p>
+
+        <h2>Con quién se comparten</h2>
+        <p>Para operar el sitio usamos proveedores que tratan los datos solo por nuestra cuenta y para estos fines:</p>
+        <ul>
+          <li>FormSubmit (formsubmit.co), que recibe el formulario y lo reenvía a nuestro correo.</li>
+          <li>Google (Gmail), donde se guarda nuestro correo.</li>
+          <li>Netlify, que aloja el sitio y puede registrar datos técnicos de la visita, como la dirección IP, por seguridad.</li>
+        </ul>
+        <p>Estos proveedores pueden tener servidores fuera de México. No compartimos tus datos con nadie más, salvo que una autoridad competente lo requiera conforme a la ley.</p>
+
+        <h2>Tus derechos (ARCO)</h2>
+        <p>Puedes pedir acceso a tus datos, corregirlos, cancelarlos u oponerte a su uso, y también revocar tu consentimiento. Escríbenos a <a href="mailto:jplw.watson@gmail.com">jplw.watson@gmail.com</a> con tu nombre, una forma de contactarte, una copia de tu identificación y una descripción clara de lo que pides. Te responderemos en los plazos que marca la ley.</p>
+
+        <h2>Cookies y almacenamiento en tu navegador</h2>
+        <p>Este sitio no usa cookies de rastreo, de publicidad ni de analítica. Solo guarda en tu navegador (almacenamiento local) el estilo y el idioma que eliges, para mostrártelos igual la próxima vez. Esa información no te identifica, no sale de tu dispositivo y la puedes borrar desde la configuración de tu navegador.</p>
+        <p>Las fuentes, fotos y videos se sirven desde el propio sitio, sin servicios externos.</p>
+
+        <h2>Cambios a este aviso</h2>
+        <p>Si cambiamos este aviso, publicaremos la nueva versión en esta página con su fecha de actualización.</p>
+
+        <h2>Si crees que se vulneraron tus derechos</h2>
+        <p>Puedes acudir a la autoridad en materia de protección de datos personales.</p>
+      </article>
+    </section>
+
+    <!-- =================== TÉRMINOS Y CONDICIONES =================== -->
+    <section class="page page-legal" id="terminos" data-page="terminos" aria-labelledby="h-terms" lang="es">
+      <article class="wrap legal">
+        <h1 class="page-title" id="h-terms">Términos y condiciones</h1>
+        <p class="legal-meta" data-i18n="legalUpdated">Última actualización: 18 de octubre de 2026.</p>
+        <p class="legal-meta" data-i18n="legalLang"></p>
+
+        <h2>Quién ofrece los servicios</h2>
+        <p>Este sitio es de <mark class="fill">[Nombre completo o razón social]</mark>, que opera bajo el nombre comercial PV Websites, con domicilio en <mark class="fill">[calle, número, colonia, código postal]</mark>, Puerto Vallarta, Jalisco, México. RFC: <mark class="fill">[RFC]</mark>. Contacto: <a href="mailto:jplw.watson@gmail.com">jplw.watson@gmail.com</a>.</p>
+
+        <h2>Uso del sitio</h2>
+        <p>El sitio es informativo. Al usarlo aceptas estos términos. Te pedimos usarlo de buena fe y no intentar dañarlo ni enviar contenido ilegal por el formulario.</p>
+
+        <h2>Cotizaciones y contratación</h2>
+        <p>La información y los precios de referencia en el sitio no son una oferta obligatoria. Cada proyecto se contrata con una propuesta por escrito que indica alcance, precio, impuestos, forma de pago y fechas. Esa propuesta aceptada es la que rige el servicio.</p>
+
+        <h2>Conceptos de diseño</h2>
+        <p>Los proyectos de la sección Trabajo son conceptos de ejemplo hechos por PV Websites. No son clientes reales ni representan a ningún negocio existente.</p>
+
+        <h2>Propiedad intelectual</h2>
+        <p>Los textos, diseños y logotipos de este sitio son de PV Websites, salvo las fotos y videos, que se usan bajo la licencia de Pexels, y las fuentes tipográficas, que se usan bajo la licencia SIL Open Font License. La propiedad del sitio que hagamos para ti se define en tu propuesta.</p>
+
+        <h2>Responsabilidad</h2>
+        <p>Cuidamos que la información del sitio sea correcta, pero puede cambiar sin aviso. No respondemos por sitios de terceros a los que enlacemos.</p>
+
+        <h2>Tus derechos como consumidor</h2>
+        <p>Nada en estos términos limita los derechos que te da la Ley Federal de Protección al Consumidor. Puedes acudir a la Procuraduría Federal del Consumidor (PROFECO).</p>
+
+        <h2>Ley aplicable</h2>
+        <p>Estos términos se rigen por las leyes de México. Para cualquier controversia, las partes se someten a los tribunales competentes de Puerto Vallarta, Jalisco, sin perjuicio de los derechos del consumidor.</p>
+      </article>
     </section>
   </main>
 
@@ -552,6 +657,9 @@
         <a href="#trabajo" data-i18n="navWork">Trabajo</a>
         <a href="#nosotros" data-i18n="navAbout">Nosotros</a>
         <a href="#contacto" data-i18n="navContact">Contacto</a>
+        <a href="#faq" data-i18n="faqShort">Preguntas frecuentes</a>
+        <a href="#privacidad" data-i18n="privacyShort">Aviso de privacidad</a>
+        <a href="#terminos" data-i18n="termsShort">Términos</a>
       </nav>
       <p class="copy">© <span data-year>2026</span> PV Websites</p>
     </div>

@@ -61,6 +61,12 @@
     w7Title: "Real estate", w7Body: "Listings with filters, a map and multilingual property pages.", w7a: "Search with filters", w7b: "Property map", w7c: "Property pages in three languages",
     w8Title: "Condos in the Marina", w8Body: "Pre-sale with floor plans, construction updates and an interest form.", w8a: "Floor plans and pre-sale prices", w8b: "Construction updates with photos", w8c: "Interest form",
     c1: "Seafood", c2: "Beach club", c3: "Hotel", c4: "Villa", c5: "On board", c6: "Surf", c7: "Homes", c8: "Marina",
+    faqLink: "See frequently asked questions", faqShort: "FAQ", privacyShort: "Privacy notice", termsShort: "Terms",
+    q5: "How do I pay for a project?", a5: "Payment terms and dates are set in writing in the proposal before we start.",
+    q6: "What do you do with my details when I write to you?", a6: "We only use them to reply and prepare your proposal. We do not sell them or use them for advertising.",
+    privacyLink: "Read the privacy notice", privacyName: "privacy notice", consent: "I have read and accept the",
+    eConsent: "To send, accept the privacy notice.",
+    legalUpdated: "Last updated: October 18, 2026.", legalLang: "This notice is published in Spanish, which is the legally binding version.",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
     aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "We make professional websites.",
     aboutBody1: "For two years we have been in Puerto Vallarta, helping local businesses look great online and win more customers.",
@@ -134,6 +140,12 @@
     w7Title: "Immobilier", w7Body: "Annonces avec filtres, carte et fiches en plusieurs langues.", w7a: "Recherche avec filtres", w7b: "Carte des propriétés", w7c: "Fiches en trois langues",
     w8Title: "Condos à la Marina", w8Body: "Prévente avec plans, avancement des travaux et formulaire d’intérêt.", w8a: "Plans et prix de prévente", w8b: "Avancement des travaux en photos", w8c: "Formulaire d’intérêt",
     c1: "Fruits de mer", c2: "Beach club", c3: "Hôtel", c4: "Villa", c5: "À bord", c6: "Surf", c7: "Maisons", c8: "Marina",
+    faqLink: "Voir les questions fréquentes", faqShort: "FAQ", privacyShort: "Confidentialité", termsShort: "Conditions",
+    q5: "Comment se paie un projet ?", a5: "Les modalités et les dates de paiement sont fixées par écrit dans la proposition avant de commencer.",
+    q6: "Que faites-vous de mes données quand je vous écris ?", a6: "Nous les utilisons seulement pour vous répondre et préparer votre proposition. Nous ne les vendons pas et ne les utilisons pas pour la publicité.",
+    privacyLink: "Lire l’avis de confidentialité", privacyName: "avis de confidentialité", consent: "J’ai lu et j’accepte l’",
+    eConsent: "Pour envoyer, acceptez l’avis de confidentialité.",
+    legalUpdated: "Dernière mise à jour : 18 octobre 2026.", legalLang: "Cet avis est publié en espagnol, qui est la version juridiquement applicable.",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
     aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Nous créons des sites web professionnels.",
     aboutBody1: "Depuis deux ans, nous aidons à Puerto Vallarta les entreprises locales à soigner leur image en ligne et à gagner des clients.",
@@ -196,7 +208,7 @@
 
   function updateTitle() {
     const tab = tabs.find((a) => a.dataset.tab === current);
-    const label = tab ? tab.textContent.trim() : "";
+    const label = tab ? tab.textContent.trim() : ($(`#${current} h1`)?.textContent.trim() || "");
     document.title = current === "inicio" || !label ? `PV Websites | ${t("heroEyebrow")}` : `${label} | PV Websites`;
   }
   function showPage(id, { focus = true } = {}) {
@@ -422,6 +434,7 @@
     { input: $("#f-name"), ok: (v) => v.trim().length > 0 },
     { input: $("#f-email"), ok: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) },
     { input: $("#f-msg"), ok: (v) => v.trim().length > 0 },
+    { input: $("#f-consent"), ok: () => $("#f-consent").checked },
   ];
   function check({ input, ok }) {
     const valid = ok(input.value);
@@ -435,6 +448,7 @@
   required.forEach((r) => {
     r.input.addEventListener("blur", () => { if (r.input.value) check(r); });
     r.input.addEventListener("input", () => { if (r.input.closest(".invalid")) check(r); });
+    r.input.addEventListener("change", () => { if (r.input.closest(".invalid")) check(r); });
   });
   function say(kind, key) {
     status.className = `form-status ${kind}`;

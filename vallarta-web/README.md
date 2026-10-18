@@ -6,7 +6,8 @@ Static, multi-page site for a web design studio in Puerto Vallarta. No build ste
 
 - Five tabs: Inicio, Servicios, Trabajo, Nosotros, Contacto. Each tab is a `<section data-page>` in `index.html`, switched by the URL hash (`#servicios`). On tablets and phones the tabs become a bottom tab bar.
 - Three styles from the switch at the top center: Minimalistic, Premium, Interactive. Each one has its own layouts in `styles.css` under `[data-mode="minimal"]`, `[data-mode="premium"]` and `[data-mode="interactive"]`. The choice is saved and also works as a link: `?mode=interactive`.
-- Interactive mode shows a 3D model of El Caballito (the seahorse statue on the Malecón), built in `scene3d.js` with three.js. three.js is self-hosted in `vendor/` (MIT license).
+- Interactive mode shows El Caballito (the seahorse statue on the Malecón) in 3D: `scene3d.js` raises a cut-out photo (`img/caballito.webp`) into a relief using a depth map (`img/caballito-depth.png`) and turns it slowly back and forth. A real scan saved as `models/caballito.glb` replaces it and turns a full 360 degrees. three.js is self-hosted in `vendor/` (MIT license).
+- The Caballito photo was supplied by the site owner. Confirm you have the rights to use it, or replace it with your own photo taken against a clear sky.
 - Three languages: Spanish text lives in `index.html`; English and French live in the `en` and `fr` objects in `app.js`.
 
 ## Contact form

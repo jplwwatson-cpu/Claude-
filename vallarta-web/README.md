@@ -5,7 +5,7 @@ Static, multi-page site for a web design studio in Puerto Vallarta. No build ste
 ## Structure
 
 - Five tabs: Inicio, Servicios, Trabajo, Nosotros, Contacto. Each tab is a `<section data-page>` in `index.html`, switched by the URL hash (`#servicios`). On tablets and phones the tabs become a bottom tab bar.
-- Six styles from the Style menu at the top center: Fluid (default), Minimalistic, Premium, Interactive, Editorial and Playa (beach: sand and turquoise, script headings, wave edges). Each one has its own tokens and layouts in `styles.css` under `[data-mode="fluid"]`, `minimal`, `premium`, `interactive`, `editorial` and `playa`. The content is the same in all of them. The choice is saved and also works as a link: `?mode=editorial`.
+- Six styles from the Style menu at the top center: Fluid (default), Minimalist (warm linen and sage, serif headings), Premium, Interactive, Editorial and Playa (beach: sand and turquoise, script headings, wave edges). Each one has its own tokens and layouts in `styles.css` under `[data-mode="fluid"]`, `minimal`, `premium`, `interactive`, `editorial` and `playa`. The content is the same in all of them. The choice is saved and also works as a link: `?mode=editorial`.
 - Home hero: one video per style in `video/` (MP4 with a WebM fallback, 720p, no audio), each with a poster in `img/`. `app.js` loads and plays only the clip for the current style and pauses it on other tabs or under reduced motion.
 - Photos and footage of Puerto Vallarta in `img/` and `video/` were supplied by the site owner from Pexels (free for commercial use).
 - Work concepts are brand covers: some on photos (`.cover.photo`), some typographic, all in `styles.css`.
@@ -24,4 +24,4 @@ After activation, FormSubmit gives you a random alias. Use it in `action` instea
 
 ## Fonts and icons
 
-Geist, Geist Mono, Plus Jakarta Sans, Cormorant Garamond, Bricolage Grotesque and Outfit (SIL OFL), Yellowtail (Apache 2.0), all from Fontsource, and Phosphor Icons (MIT), all self-hosted in `fonts/`, so no visitor data goes to a font CDN.
+Geist, Geist Mono, Plus Jakarta Sans, Cormorant Garamond, Bricolage Grotesque, Instrument Serif and Outfit (SIL OFL), Yellowtail (Apache 2.0), all from Fontsource, and Phosphor Icons (MIT), all self-hosted in `fonts/`, so no visitor data goes to a font CDN.

@@ -67,7 +67,7 @@
     privacyLink: "Read the privacy notice", privacyName: "privacy notice", consent: "I have read and accept the",
     eConsent: "To send, accept the privacy notice.",
     legalUpdated: "Last updated: October 18, 2026.", legalLang: "This notice is published in Spanish, which is the legally binding version.",
-    styleWord: "Style", mFluid: "Fluid", mEditorial: "Editorial", mPlaya: "Beach",
+    styleWord: "Style", mMinimal: "Minimalistic", mFluid: "Fluid", mEditorial: "Editorial", mPlaya: "Beach",
     orForm: "or use the form",
     close: "Close", includesLabel: "What it includes", wantThis: "I want one like this",
     aboutAlt: "Banderas Bay beach and palm trees seen from above", aboutEyebrow: "About us", aboutTitle: "A small studio in Puerto Vallarta",
@@ -148,7 +148,7 @@
     privacyLink: "Lire l’avis de confidentialité", privacyName: "avis de confidentialité", consent: "J’ai lu et j’accepte l’",
     eConsent: "Pour envoyer, acceptez l’avis de confidentialité.",
     legalUpdated: "Dernière mise à jour : 18 octobre 2026.", legalLang: "Cet avis est publié en espagnol, qui est la version juridiquement applicable.",
-    styleWord: "Style", mFluid: "Fluide", mEditorial: "Éditorial", mPlaya: "Plage",
+    styleWord: "Style", mMinimal: "Minimaliste", mFluid: "Fluide", mEditorial: "Éditorial", mPlaya: "Plage",
     orForm: "ou utilisez le formulaire",
     close: "Fermer", includesLabel: "Ce qui est inclus", wantThis: "J’en veux un comme ça",
     aboutAlt: "Plage et palmiers de la baie de Banderas vus d’en haut", aboutEyebrow: "À propos", aboutTitle: "Un petit studio à Puerto Vallarta",
@@ -239,7 +239,7 @@
 
   /* ================= MODES ================= */
   const modeButtons = $$("[data-set-mode]");
-  const themeColor = { fluid: "#f7f8fb", minimal: "#fafaf9", premium: "#0b0c0e", interactive: "#f1f2f4", editorial: "#fafafa", playa: "#f7ecdd" };
+  const themeColor = { fluid: "#f7f8fb", minimal: "#f6f3ee", premium: "#0b0c0e", interactive: "#f1f2f4", editorial: "#fafafa", playa: "#f7ecdd" };
   function syncModeUi() {
     const mode = root.dataset.mode;
     modeButtons.forEach((b) => b.setAttribute("aria-checked", String(b.dataset.setMode === mode)));

@@ -3,6 +3,11 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+// Drop a real scan of the statue at this path (for example from Polycam or RealityScan) and it
+// replaces the hand-built model below automatically.
+const REAL_MODEL_URL = "models/caballito.glb";
 
 const UP = new THREE.Vector3(0, 1, 0);
 
@@ -139,7 +144,7 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
     });
   }
 
-  /* ---------- The boy rider ---------- */
+  /* ---------- The boy rider: a naked, smiling child with a charro sombrero hanging on his back ---------- */
   const limb = (a, b, r, mat = bronzeDark) => {
     const dir = new THREE.Vector3().subVectors(b, a);
     const len = dir.length();
@@ -152,8 +157,24 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
   const hip = V(-0.3, 2.28, 0);
   const neck = V(-0.36, 2.86, 0);
   limb(hip, neck, 0.17);                                          // torso
-  add(new THREE.SphereGeometry(0.17, 24, 18), bronzeDark, (m) => m.position.set(-0.34, 3.12, 0)); // head
-  add(new THREE.SphereGeometry(0.175, 24, 18, 0, Math.PI * 2, 0, Math.PI * 0.55), bronze, (m) => m.position.set(-0.36, 3.15, 0)); // hair
+  add(new THREE.SphereGeometry(0.2, 28, 20), bronzeDark, (m) => m.position.set(-0.33, 3.15, 0)); // child-sized head
+  add(new THREE.SphereGeometry(0.205, 28, 20, 0, Math.PI * 2, 0, Math.PI * 0.5), bronze, (m) => m.position.set(-0.35, 3.18, 0)); // hair
+  add(new THREE.TorusGeometry(0.13, 0.012, 6, 24), bronze, (m) => { m.position.set(-0.36, 2.92, 0); m.rotation.x = Math.PI / 2; }); // hat string
+  // Charro sombrero: wide brim with rolled edge and a tall crown, hanging behind the shoulders.
+  const hat = new THREE.Group();
+  const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.46, 0.025, 48), bronze);
+  const edge = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.035, 10, 48), bronze);
+  edge.rotation.x = Math.PI / 2;
+  const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.16, 0.34, 32), bronze);
+  crown.position.y = 0.18;
+  const band = new THREE.Mesh(new THREE.TorusGeometry(0.155, 0.018, 8, 32), bronzeDark);
+  band.rotation.x = Math.PI / 2;
+  band.position.y = 0.04;
+  for (const m of [brim, edge, crown, band]) { m.castShadow = true; hat.add(m); }
+  hat.position.set(-0.6, 2.62, 0);
+  hat.rotation.z = Math.PI / 2 + 0.25;
+  statue.add(hat);
+  for (const z of [-0.1, 0.1]) limb(V(-0.42, 2.9, z), V(-0.58, 2.66, z * 1.6), 0.01, bronze);
   for (const s of [-1, 1]) {
     const knee = V(-0.02, 2.12, 0.36 * s), foot = V(-0.06, 1.68, 0.4 * s);
     limb(V(-0.28, 2.26, 0.12 * s), knee, 0.08);                   // thigh
@@ -190,6 +211,21 @@ export function createScene(canvas, { reduceMotion = false } = {}) {
   scene.add(foam);
 
   statue.position.y = 0;
+
+  // Swap in a real scan when one is present.
+  new GLTFLoader().loadAsync(REAL_MODEL_URL).then((gltf) => {
+    const model = gltf.scene;
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const s = 3.7 / size.y;
+    model.scale.setScalar(s);
+    box.setFromObject(model);
+    const c = box.getCenter(new THREE.Vector3());
+    model.position.set(-c.x, 0.12 - box.min.y, -c.z);
+    model.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+    statue.clear();
+    statue.add(model);
+  }).catch(() => { /* no scan yet: keep the hand-built model */ });
 
   /* ---------- Interaction: tap to make it jump ---------- */
   let jumpV = 0, jumpY = 0, spinBoost = 0, down = null;
